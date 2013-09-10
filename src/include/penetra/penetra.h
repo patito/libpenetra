@@ -1,6 +1,8 @@
 #ifndef _PENETRA_H_
 #define _PENETRA_H_
 
+#include <stdbool.h>
+
 #include "defines.h"
 #include "error.h"
 #include "types.h"
@@ -49,6 +51,12 @@ extern _u32 penetra_open_malloc(Penetra *pen, const char *fp);
  *
  */
 extern _u32 penetra_finish(Penetra *pen);
+
+/* 
+ *
+ *
+ */
+extern _u32 penetra_is_pe(Penetra *pen);
 
 
 

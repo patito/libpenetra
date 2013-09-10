@@ -20,4 +20,7 @@
 #define PENETRA_ALLOC_MALLOC 2
 
 
+/* MZ - The first 2 Bytes of PE */
+#define MZ 0x5a4d
+
 #endif /* _PENETRA_DEFINES_H_ */

@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdbool.h>
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -84,6 +83,7 @@ static _i32 _penetra_open_file(Penetra *pen, const char *fname)
 _fail:
 	if (NULL != pen->fname) {
 		free(pen->fname);
+		pen->fname = NULL;
 	}
 
 	if (-1 != pen->fd) {
@@ -249,5 +249,23 @@ _u32 penetra_get_alloc_type(Penetra *pen, _u8 *alloc_type)
 	return PENETRA_SUCCESS;
 }
 
+_u32 penetra_is_pe(Penetra *pen)
+{
+	_i32 error;
 
+	if (NULL == pen) {
+		return PENETRA_ERROR;
+	}
+
+	if (NULL == pen->mem) {
+		return PENETRA_ERROR;
+	}
+
+	error =	memcmp((const void*)"MZ", (const void*)pen->mem, 2);
+	if (-1 == error) {
+		return PENETRA_ENOT_PE;
+	}
+
+	return PENETRA_SUCCESS;
+}
 
