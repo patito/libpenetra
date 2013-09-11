@@ -112,9 +112,25 @@ static _u32 _penetra_load_mmap(Penetra *pen)
 
 static _u32 _penetra_load_malloc(Penetra *pen)
 {
+	_i16 n = 0;
+	_u32 i = 0;
+
 	if (NULL == pen) {
 		return PENETRA_ERROR;
 	}
+
+	pen->mem = malloc(pen->size * sizeof(_u8));
+	if (NULL == pen->mem) {
+		return PENETRA_EALLOC;
+	}
+
+	while ((n = read(pen->fd, pen->mem + i, 1)) > 0 && ++i);
+
+	if (-1 == n) {
+		_i32 error = errno;
+		return error;
+	}
+
 	return PENETRA_ERROR;
 }
 
@@ -159,12 +175,12 @@ _u32 penetra_open_mmap(Penetra *pen, const char *fname)
 	_u32 status = PENETRA_ERROR;
 	
 	status = penetra_set_alloc_type(pen, PENETRA_ALLOC_MMAP);
-	if (status != PENETRA_SUCCESS) {
+	if (PENETRA_SUCCESS != status) {
 		return status;
 	} 
 	
 	status = penetra_open(pen, fname);
-	if (status != PENETRA_SUCCESS) {
+	if (PENETRA_SUCCESS != status) {
 		return status;
 	} 
 
@@ -174,14 +190,14 @@ _u32 penetra_open_mmap(Penetra *pen, const char *fname)
 _u32 penetra_open_malloc(Penetra *pen, const char *fname)
 {
 	_u32 status = PENETRA_ERROR;
-
+	
 	status = penetra_set_alloc_type(pen, PENETRA_ALLOC_MALLOC);
-	if (status != PENETRA_SUCCESS) {
+	if (PENETRA_SUCCESS != status) {
 		return status;
 	} 
 
 	status = penetra_open(pen, fname);
-	if (status != PENETRA_SUCCESS) {
+	if (PENETRA_SUCCESS != status) {
 		return status;
 	}
 
@@ -228,7 +244,7 @@ _u32 penetra_set_alloc_type(Penetra *pen, _u8 alloc_type)
 		return PENETRA_ERROR;
 	}
 
-	if ((PENETRA_ALLOC_MMAP != alloc_type) ||
+	if ((PENETRA_ALLOC_MMAP != alloc_type) &&
         (PENETRA_ALLOC_MALLOC != alloc_type)) {
 			return PENETRA_ERROR;
     }
