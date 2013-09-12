@@ -6,15 +6,19 @@
 #include "defines.h"
 #include "error.h"
 #include "types.h"
+#include "dos.h"
+
 
 PENETRA_BEGIN_DECLS
 
+
 typedef struct {
-	_i32 fd;
-	_u32 size;
-	char *fname;
-	_u8 alloc_type;
-	_u8 *mem;
+	_i32 fd;			/* Binary file descriptor */
+	_u32 size;			/* The binary size */
+	char *fname;		/* binary file name */
+	_u8 alloc_type;		/* Alloc type: mmap or malloc */
+	_u8 *mem;			/* Loaded binary */
+	PenetraDos *dos; 	/* IMAGE_DOS_HEADER */
 } Penetra;
 
 
@@ -98,6 +102,16 @@ extern _u32 penetra_is_pe(Penetra *pen);
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_get_alloc_type(Penetra *pen, _u8 *alloc_type);
+
+
+/* Get IMAGE_DOS_HEADER address.
+ *
+ * @param pen A valid Penetra object.
+ * @param dos A valid PenetraDos object.
+ *
+ * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
+ */
+extern _u32 penetra_get_dos(Penetra *pen, PenetraDos **dos);
 
 
 /****************************************************************************** 

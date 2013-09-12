@@ -13,6 +13,20 @@
 
 /* Private Methods _ */
 
+static _u32 _penetra_load_dos(Penetra *pen)
+{
+	if (NULL == pen) {
+		return PENETRA_ERROR;
+	}
+
+	if (NULL == pen->mem) {
+		return PENETRA_ERROR;
+	}
+	pen->dos = (PenetraDos *) pen->mem;
+	
+	return PENETRA_SUCCESS;
+}
+
 static _u32 _penetra_dealloc(Penetra *pen)
 {
 	_i32 error = PENETRA_SUCCESS;
@@ -147,6 +161,8 @@ static _u32 _penetra_load(Penetra *pen)
 	} else if (PENETRA_ALLOC_MALLOC == pen->alloc_type) {
 		error = _penetra_load_malloc(pen);
 	}
+	
+	_penetra_load_dos(pen);
 
 	return error;
 }
@@ -277,11 +293,29 @@ _u32 penetra_is_pe(Penetra *pen)
 		return PENETRA_ERROR;
 	}
 
-	error =	memcmp((const void*)"MZ", (const void*)pen->mem, 2);
+	/* First two bytes are "MZ" or 0x5a4d  */
+	error =	memcmp(IMAGE_DOS_SIGNATURE, pen->mem, 2);
 	if (-1 == error) {
 		return PENETRA_ENOT_PE;
 	}
 
+	/* Checking PE signature PE00 */
+	
+
 	return PENETRA_SUCCESS;
 }
 
+_u32 penetra_get_dos(Penetra *pen, PenetraDos **dos)
+{
+	if (NULL == pen) {
+		return PENETRA_ERROR;
+	}
+
+	if (NULL == dos) {
+		return PENETRA_ERROR;
+	}
+
+	*dos = pen->dos;
+
+	return PENETRA_SUCCESS;
+}

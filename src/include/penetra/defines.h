@@ -21,6 +21,6 @@
 
 
 /* MZ - The first 2 Bytes of PE */
-#define MZ 0x5a4d
+#define IMAGE_DOS_SIGNATURE "MZ"
 
 #endif /* _PENETRA_DEFINES_H_ */

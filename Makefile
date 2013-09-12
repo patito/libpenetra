@@ -6,7 +6,7 @@ LDFLAGS = -shared  # linking flags
 RM = rm -f  # rm command
 TARGET_LIB = lib/libpenetra.so # target lib
  
-SRCS = src/penetra.c # source files
+SRCS = src/penetra.c src/dos.c # source files
 OBJS = $(SRCS:.c=.o)
  
 .PHONY: all
