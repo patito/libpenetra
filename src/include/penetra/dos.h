@@ -63,6 +63,156 @@ extern _u32 penetra_dos_get_e_magic(PenetraDos *dos, char **signature);
 extern _u32 penetra_dos_get_e_lfanew(PenetraDos *dos, _i32 *offset);
 
 
+/* Get field e_cblp, that stores the number of bytes on last page of file.
+ *
+ * @param dos A valid PenetraDos object.
+ * @param cblp Saved the number of bytes on last page of file.
+ *
+ * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
+ */
+extern _u32 penetra_dos_get_e_cblp(PenetraDos *dos, _u16 *cblp);
+
+
+/* Get field e_cp, that stores the number of 512 byte pages in the file
+ *
+ * @param dos A valid PenetraDos object.
+ * @param cp Saved the number of pages in file.
+ *
+ * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
+ */
+extern _u32 penetra_dos_get_e_cp(PenetraDos *dos, _u16 *cp);
+
+
+/* Get field e_crlc, relocations.
+ *
+ * @param dos A valid PenetraDos object.
+ * @param crlc Saved relocations.
+ *
+ * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
+ */
+extern _u32 penetra_dos_get_e_crlc(PenetraDos *dos, _u16 *crlc);
+
+
+/* Get field e_
+ *
+ * @param dos A valid PenetraDos object.
+ * @param 
+ *
+ * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
+ */
+extern _u32 penetra_dos_get_e_cparhdr(PenetraDos *dos, _u16 *cparhdr);
+
+
+/* Get field e_
+ *
+ * @param dos A valid PenetraDos object.
+ * @param 
+ *
+ * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
+ */
+extern _u32 penetra_dos_get_e_minalloc(PenetraDos *dos, _u16 *minalloc);
+
+
+/* Get field e_
+ *
+ * @param dos A valid PenetraDos object.
+ * @param 
+ *
+ * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
+ */
+extern _u32 penetra_dos_get_e_maxalloc(PenetraDos *dos, _u16 *maxalloc);
+
+
+/* Get field e_
+ *
+ * @param dos A valid PenetraDos object.
+ * @param 
+ *
+ * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
+ */
+extern _u32 penetra_dos_get_e_ss(PenetraDos *dos, _u16 *ss);
+
+
+/* Get field e_
+ *
+ * @param dos A valid PenetraDos object.
+ * @param 
+ *
+ * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
+ */
+extern _u32 penetra_dos_get_e_sp(PenetraDos *dos, _u16 *sp);
+
+
+/* Get field e_
+ *
+ * @param dos A valid PenetraDos object.
+ * @param 
+ *
+ * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
+ */
+extern _u32 penetra_dos_get_e_csum(PenetraDos *dos, _u16 *csum);
+
+
+/* Get field e_
+ *
+ * @param dos A valid PenetraDos object.
+ * @param 
+ *
+ * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
+ */
+extern _u32 penetra_dos_get_e_ip(PenetraDos *dos, _u16 *ip);
+
+
+/* Get field e_
+ *
+ * @param dos A valid PenetraDos object.
+ * @param 
+ *
+ * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
+ */
+extern _u32 penetra_dos_get_e_cs(PenetraDos *dos, _u16 *cs);
+
+
+/* Get field e_
+ *
+ * @param dos A valid PenetraDos object.
+ * @param 
+ *
+ * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
+ */
+extern _u32 penetra_dos_get_e_lfarlc(PenetraDos *dos, _u16 *lfarlc);
+
+
+/* Get field e_
+ *
+ * @param dos A valid PenetraDos object.
+ * @param 
+ *
+ * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
+ */
+extern _u32 penetra_dos_get_e_ovno(PenetraDos *dos, _u16 *ovno);
+
+
+/* Get field e_
+ *
+ * @param dos A valid PenetraDos object.
+ * @param 
+ *
+ * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
+ */
+extern _u32 penetra_dos_get_e_oemid(PenetraDos *dos, _u16 *cblp);
+
+
+/* Get field e_
+ *
+ * @param dos A valid PenetraDos object.
+ * @param 
+ *
+ * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
+ */
+extern _u32 penetra_dos_get_e_oeminfo(PenetraDos *dos, _u16 *cblp);
+
+
 PENETRA_END_DECLS
 
 

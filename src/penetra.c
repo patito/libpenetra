@@ -16,11 +16,11 @@
 static _u32 _penetra_load_dos(Penetra *pen)
 {
 	if (NULL == pen) {
-		return PENETRA_ERROR;
+		return PENETRA_EINVAL;
 	}
 
 	if (NULL == pen->mem) {
-		return PENETRA_ERROR;
+		return PENETRA_EFAULT;
 	}
 	pen->dos = (PenetraDos *) pen->mem;
 	
@@ -32,7 +32,7 @@ static _u32 _penetra_dealloc(Penetra *pen)
 	_i32 error = PENETRA_SUCCESS;
 
 	if (NULL == pen) {
-		return PENETRA_ERROR;
+		return PENETRA_EINVAL;
 	}
 
 	if (-1 != pen->fd) {
@@ -62,11 +62,11 @@ static _i32 _penetra_open_file(Penetra *pen, const char *fname)
 	struct stat st_info;
 
 	if (NULL == pen) {
-		return PENETRA_ERROR;
+		return PENETRA_EINVAL;
 	}
 
 	if (NULL == fname) {
-		return PENETRA_ERROR;
+		return PENETRA_EINVAL;
 	}
 
 	pen->fname = strdup(fname);
@@ -112,7 +112,7 @@ static _u32 _penetra_load_mmap(Penetra *pen)
 	_i32 error;
 
 	if (NULL == pen) {
-		return PENETRA_ERROR;
+		return PENETRA_EINVAL;
 	}
 
 	pen->mem = mmap(0, pen->size, PROT_READ|PROT_WRITE, MAP_PRIVATE, pen->fd, 0);
@@ -130,7 +130,7 @@ static _u32 _penetra_load_malloc(Penetra *pen)
 	_u32 i = 0;
 
 	if (NULL == pen) {
-		return PENETRA_ERROR;
+		return PENETRA_EINVAL;
 	}
 
 	pen->mem = malloc(pen->size * sizeof(_u8));
@@ -145,7 +145,7 @@ static _u32 _penetra_load_malloc(Penetra *pen)
 		return error;
 	}
 
-	return PENETRA_ERROR;
+	return PENETRA_SUCCESS;
 }
 
 static _u32 _penetra_load(Penetra *pen)
@@ -153,7 +153,7 @@ static _u32 _penetra_load(Penetra *pen)
 	_i32 error;
 
 	if (NULL == pen) {
-		return PENETRA_ERROR;
+		return PENETRA_EINVAL;
 	}
 
 	if (PENETRA_ALLOC_MMAP == pen->alloc_type) {
@@ -173,7 +173,7 @@ static _u32 _penetra_load(Penetra *pen)
 _u32 penetra_init(Penetra *pen)
 {
 	if (NULL == pen) {
-		return PENETRA_ERROR;
+		return PENETRA_EINVAL;
 	}
 
 	pen->fd = -1;
@@ -189,6 +189,14 @@ _u32 penetra_init(Penetra *pen)
 _u32 penetra_open_mmap(Penetra *pen, const char *fname)
 {
 	_u32 status = PENETRA_ERROR;
+
+	if (NULL == pen) {
+		return PENETRA_EINVAL;
+	}
+
+	if (NULL == fname) {
+		return PENETRA_EINVAL;
+	}
 	
 	status = penetra_set_alloc_type(pen, PENETRA_ALLOC_MMAP);
 	if (PENETRA_SUCCESS != status) {
@@ -206,6 +214,14 @@ _u32 penetra_open_mmap(Penetra *pen, const char *fname)
 _u32 penetra_open_malloc(Penetra *pen, const char *fname)
 {
 	_u32 status = PENETRA_ERROR;
+
+	if (NULL == pen) {
+		return PENETRA_EINVAL;
+	}
+
+	if (NULL == fname) {
+		return PENETRA_EINVAL;
+	}
 	
 	status = penetra_set_alloc_type(pen, PENETRA_ALLOC_MALLOC);
 	if (PENETRA_SUCCESS != status) {
@@ -225,11 +241,11 @@ _u32 penetra_open(Penetra *pen, const char *fname)
 	_i32 error;
 
 	if (NULL == pen) {
-		return PENETRA_ERROR;
+		return PENETRA_EINVAL;
 	}
 
 	if (NULL == fname) {
-		return PENETRA_ERROR;
+		return PENETRA_EINVAL;
 	}
 
 	error = _penetra_open_file(pen, fname);
@@ -239,7 +255,7 @@ _u32 penetra_open(Penetra *pen, const char *fname)
 
 	if ((PENETRA_ALLOC_MMAP != pen->alloc_type) &&
 		(PENETRA_ALLOC_MALLOC != pen->alloc_type)) {
-		return PENETRA_ERROR;
+		return PENETRA_EINVAL;
 	} 
 	
 	return _penetra_load(pen);		
@@ -248,7 +264,7 @@ _u32 penetra_open(Penetra *pen, const char *fname)
 _u32 penetra_finish(Penetra *pen)
 {
 	if (NULL == pen) {
-		return PENETRA_ERROR;
+		return PENETRA_EINVAL;
 	}
 
 	return _penetra_dealloc(pen);
@@ -257,12 +273,12 @@ _u32 penetra_finish(Penetra *pen)
 _u32 penetra_set_alloc_type(Penetra *pen, _u8 alloc_type)
 {
 	if (NULL == pen) {
-		return PENETRA_ERROR;
+		return PENETRA_EINVAL;
 	}
 
 	if ((PENETRA_ALLOC_MMAP != alloc_type) &&
         (PENETRA_ALLOC_MALLOC != alloc_type)) {
-			return PENETRA_ERROR;
+		return PENETRA_EINVAL;
     }
 
 	pen->alloc_type = alloc_type;	
@@ -273,7 +289,7 @@ _u32 penetra_set_alloc_type(Penetra *pen, _u8 alloc_type)
 _u32 penetra_get_alloc_type(Penetra *pen, _u8 *alloc_type)
 {
 	if (NULL == pen) {
-		return PENETRA_ERROR;
+		return PENETRA_EINVAL;
 	}
 
 	*alloc_type = pen->alloc_type;
@@ -286,11 +302,11 @@ _u32 penetra_is_pe(Penetra *pen)
 	_i32 error;
 
 	if (NULL == pen) {
-		return PENETRA_ERROR;
+		return PENETRA_EINVAL;
 	}
 
 	if (NULL == pen->mem) {
-		return PENETRA_ERROR;
+		return PENETRA_EFAULT;
 	}
 
 	/* First two bytes are "MZ" or 0x5a4d  */
@@ -308,11 +324,11 @@ _u32 penetra_is_pe(Penetra *pen)
 _u32 penetra_get_dos(Penetra *pen, PenetraDos **dos)
 {
 	if (NULL == pen) {
-		return PENETRA_ERROR;
+		return PENETRA_EINVAL;
 	}
 
 	if (NULL == dos) {
-		return PENETRA_ERROR;
+		return PENETRA_EINVAL;
 	}
 
 	*dos = pen->dos;
