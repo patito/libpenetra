@@ -36,23 +36,21 @@ typedef struct {
 /* Get Image dos Signature, MZ.
  *
  * @param dos A valid PenetraDos object.
- * @param buffer The allocated buffer to store the signature
- * @param len Number of bytes to be copied.
+ * @param signature Saved signature address.
  * 
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_signature(PenetraDos *dos, char *buffer, _u32 len);
+extern _u32 penetra_dos_get_signature(PenetraDos *dos, char **signature);
 
 
 /* Get Image dos Signature, MZ.
  *
  * @param dos A valid PenetraDos object.
- * @param buffer The allocated buffer to store the signature
- * @param len Number of bytes to be copied.
+ * @param signature Saved signature address.
  * 
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_e_magic(PenetraDos *dos, char *buffer, _u32 len);
+extern _u32 penetra_dos_get_e_magic(PenetraDos *dos, char **signature);
 
 
 /* Get field e_elfnew, the PE Header offset.

@@ -3,32 +3,24 @@
 #include <penetra/dos.h>
 #include <penetra/error.h>
 
-_u32 penetra_dos_get_signature(PenetraDos *dos, char *buffer, _u32 len)
+_u32 penetra_dos_get_signature(PenetraDos *dos, char **signature)
 {
 	if (NULL == dos) {
 		return PENETRA_ERROR;	
 	}
 	
-	if (NULL == buffer) {
+	if (NULL == signature) {
 		return PENETRA_ERROR;
 	}
 
-	if (0 == len) {
-		len = 2;
-	}
-
-	if (NULL == strncpy(buffer, (const char*)dos, len)) {
-		return PENETRA_ERROR;
-	}
-
-	buffer[2] = '\0';
+	*signature = (char *)dos;
 
 	return PENETRA_SUCCESS;
 }
 
-_u32 penetra_dos_get_e_magic(PenetraDos *dos, char *buffer, _u32 len)
+_u32 penetra_dos_get_e_magic(PenetraDos *dos, char **signature)
 {
-	return penetra_dos_get_signature(dos, buffer, len);
+	return penetra_dos_get_signature(dos, signature);
 }
 
 _u32 penetra_dos_get_e_lfanew(PenetraDos *dos, _i32 *offset)

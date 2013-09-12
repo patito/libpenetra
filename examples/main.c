@@ -7,7 +7,7 @@ int main ()
 	PenetraDos *dos;
 	_u8 atype;
 	_i32 offset;
-	char buffer[3] = {0};
+	char *signature;
 
 	penetra_init(&pen);
 	penetra_open_malloc(&pen, "/home/benatto/Downloads/putty.exe");
@@ -23,8 +23,9 @@ int main ()
 	
 	penetra_get_dos(&pen, &dos);
 
-	penetra_dos_get_signature(dos, buffer, 2);
-	printf("Signature = %s\n", buffer);
+	penetra_dos_get_signature(dos, &signature);
+	printf("Signature = %c\n", signature[0]);
+	printf("Signature = %c\n", signature[1]);
 
 	penetra_dos_get_e_lfanew(dos, &offset);
 	printf("PE Header Offset = 0x%08x\n", offset);
