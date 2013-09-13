@@ -27,6 +27,27 @@ static _u32 _penetra_load_dos(Penetra *pen)
 	return PENETRA_SUCCESS;
 }
 
+static _u32 _penetra_load_coff(Penetra *pen)
+{
+	if (NULL == pen) {
+		return PENETRA_EINVAL;
+	}
+
+	if (NULL == pen->mem) {
+		return PENETRA_EFAULT;
+	}
+
+	if (NULL == pen->dos) {
+		return PENETRA_EFAULT;
+	}
+
+	pen->coff = (PenetraCoff *) (pen->mem +  
+								 pen->dos->e_lfanew + 
+								 SIZEOF_NT_SIGNATURE);
+	
+	return PENETRA_SUCCESS;
+}
+
 static _u32 _penetra_dealloc(Penetra *pen)
 {
 	_i32 error = PENETRA_SUCCESS;
@@ -163,6 +184,7 @@ static _u32 _penetra_load(Penetra *pen)
 	}
 	
 	_penetra_load_dos(pen);
+	_penetra_load_coff(pen);
 
 	return error;
 }
@@ -316,7 +338,6 @@ _u32 penetra_is_pe(Penetra *pen)
 	}
 
 	/* Checking PE signature PE00 */
-	
 
 	return PENETRA_SUCCESS;
 }
@@ -335,3 +356,20 @@ _u32 penetra_get_dos(Penetra *pen, PenetraDos **dos)
 
 	return PENETRA_SUCCESS;
 }
+
+_u32 penetra_get_coff(Penetra *pen, PenetraCoff **coff)
+{
+	if (NULL == pen) {
+		return PENETRA_EINVAL;
+	}
+
+	if (NULL == coff) {
+		return PENETRA_EINVAL;
+	}
+
+	*coff = pen->coff;
+
+	return PENETRA_SUCCESS;
+}
+
+

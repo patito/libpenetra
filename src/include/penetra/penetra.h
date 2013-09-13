@@ -7,6 +7,7 @@
 #include "error.h"
 #include "types.h"
 #include "dos.h"
+#include "coff.h"
 
 
 PENETRA_BEGIN_DECLS
@@ -19,6 +20,7 @@ typedef struct {
 	_u8 alloc_type;		/* Alloc type: mmap or malloc */
 	_u8 *mem;			/* Loaded binary */
 	PenetraDos *dos; 	/* IMAGE_DOS_HEADER */
+	PenetraCoff *coff; 	/* PE File Header */
 } Penetra;
 
 
@@ -112,6 +114,16 @@ extern _u32 penetra_get_alloc_type(Penetra *pen, _u8 *alloc_type);
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_get_dos(Penetra *pen, PenetraDos **dos);
+
+
+/* Get PE File Header address.
+ *
+ * @param pen A valid Penetra object.
+ * @param dos A valid PenetraCoff object.
+ *
+ * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
+ */
+extern _u32 penetra_get_coff(Penetra *pen, PenetraCoff **coff);
 
 
 /****************************************************************************** 

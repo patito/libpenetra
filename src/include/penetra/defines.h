@@ -23,4 +23,7 @@
 /* MZ - The first 2 Bytes of PE */
 #define IMAGE_DOS_SIGNATURE "MZ"
 
+/* NT SIGNATURE "PE00" */
+#define SIZEOF_NT_SIGNATURE 4
+
 #endif /* _PENETRA_DEFINES_H_ */

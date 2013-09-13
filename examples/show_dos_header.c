@@ -1,11 +1,11 @@
 #include <stdio.h>
+
 #include <penetra/penetra.h>
 
 int main ()
 {	
 	Penetra pen;
 	PenetraDos *dos;
-	_u8 atype;
 	_i32 offset;
 	char *signature;
 	_u16 cblp;
@@ -26,16 +26,6 @@ int main ()
 
 	penetra_init(&pen);
 	penetra_open_malloc(&pen, "/home/benatto/Downloads/putty.exe");
-	
-	if (PENETRA_SUCCESS == penetra_is_pe(&pen)) {
-		printf("Is a PE file!\n");
-	} else {
-		printf("Is NOT a PE file!\n");
-		return -1;
-	}
-
-	penetra_get_alloc_type(&pen, &atype);
-	printf("Alloc Type = %d\n", atype);
 	
 	penetra_get_dos(&pen, &dos);
 

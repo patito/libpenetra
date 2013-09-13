@@ -200,7 +200,7 @@ extern _u32 penetra_dos_get_e_ovno(PenetraDos *dos, _u16 *ovno);
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_e_oemid(PenetraDos *dos, _u16 *cblp);
+extern _u32 penetra_dos_get_e_oemid(PenetraDos *dos, _u16 *oemid);
 
 
 /* Get field e_
@@ -210,7 +210,7 @@ extern _u32 penetra_dos_get_e_oemid(PenetraDos *dos, _u16 *cblp);
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_e_oeminfo(PenetraDos *dos, _u16 *cblp);
+extern _u32 penetra_dos_get_e_oeminfo(PenetraDos *dos, _u16 *oeminfo);
 
 
 PENETRA_END_DECLS
