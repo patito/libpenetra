@@ -182,6 +182,10 @@ static _u32 _penetra_load(Penetra *pen)
 	} else if (PENETRA_ALLOC_MALLOC == pen->alloc_type) {
 		error = _penetra_load_malloc(pen);
 	}
+
+	if (PENETRA_SUCCESS != error) {
+		return error;
+	}
 	
 	_penetra_load_dos(pen);
 	_penetra_load_coff(pen);

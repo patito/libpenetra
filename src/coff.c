@@ -44,3 +44,19 @@ _u32 penetra_coff_get_arch(PenetraCoff *coff, _u16 *arch)
 	return PENETRA_SUCCESS;
 }
 
+_u32 penetra_coff_get_nsections(PenetraCoff *coff, _u16 *nsections)
+{
+	if (NULL == coff) {
+		return PENETRA_EINVAL;
+	}
+
+	if (NULL == nsections) {
+		return PENETRA_EINVAL;
+	}
+
+	*nsections = coff->nsections;
+
+	return PENETRA_SUCCESS;
+}
+
+
