@@ -4,14 +4,13 @@
 #include <penetra/penetra.h>
 
 int main ()
-{	
+{
 	Penetra pen;
 	PenetraDos *dos;
-	_i32 offset;
 
 	penetra_init(&pen);
 	penetra_open_malloc(&pen, "/home/benatto/Downloads/putty.exe");
-	
+
 	penetra_get_dos(&pen, &dos);
 
 	printf("e_magic = %.2s\n", (char*)dos);
