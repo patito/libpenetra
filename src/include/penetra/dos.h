@@ -50,7 +50,7 @@ extern _u32 penetra_dos_get_signature(PenetraDos *dos, char **signature);
  * 
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_e_magic(PenetraDos *dos, char **signature);
+extern _u32 penetra_dos_get_magic(PenetraDos *dos, char **signature);
 
 
 /* Get field e_elfnew, the PE Header offset.
@@ -60,7 +60,7 @@ extern _u32 penetra_dos_get_e_magic(PenetraDos *dos, char **signature);
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_e_lfanew(PenetraDos *dos, _i32 *offset);
+extern _u32 penetra_dos_get_lfanew(PenetraDos *dos, _i32 *offset);
 
 
 /* Get field e_cblp, that stores the number of bytes on last page of file.
@@ -70,7 +70,7 @@ extern _u32 penetra_dos_get_e_lfanew(PenetraDos *dos, _i32 *offset);
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_e_cblp(PenetraDos *dos, _u16 *cblp);
+extern _u32 penetra_dos_get_cblp(PenetraDos *dos, _u16 *cblp);
 
 
 /* Get field e_cp, that stores the number of 512 byte pages in the file
@@ -80,7 +80,7 @@ extern _u32 penetra_dos_get_e_cblp(PenetraDos *dos, _u16 *cblp);
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_e_cp(PenetraDos *dos, _u16 *cp);
+extern _u32 penetra_dos_get_cp(PenetraDos *dos, _u16 *cp);
 
 
 /* Get field e_crlc, relocations.
@@ -90,7 +90,7 @@ extern _u32 penetra_dos_get_e_cp(PenetraDos *dos, _u16 *cp);
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_e_crlc(PenetraDos *dos, _u16 *crlc);
+extern _u32 penetra_dos_get_crlc(PenetraDos *dos, _u16 *crlc);
 
 
 /* Get field e_
@@ -100,7 +100,7 @@ extern _u32 penetra_dos_get_e_crlc(PenetraDos *dos, _u16 *crlc);
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_e_cparhdr(PenetraDos *dos, _u16 *cparhdr);
+extern _u32 penetra_dos_get_cparhdr(PenetraDos *dos, _u16 *cparhdr);
 
 
 /* Get field e_
@@ -110,7 +110,7 @@ extern _u32 penetra_dos_get_e_cparhdr(PenetraDos *dos, _u16 *cparhdr);
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_e_minalloc(PenetraDos *dos, _u16 *minalloc);
+extern _u32 penetra_dos_get_minalloc(PenetraDos *dos, _u16 *minalloc);
 
 
 /* Get field e_
@@ -120,7 +120,7 @@ extern _u32 penetra_dos_get_e_minalloc(PenetraDos *dos, _u16 *minalloc);
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_e_maxalloc(PenetraDos *dos, _u16 *maxalloc);
+extern _u32 penetra_dos_get_maxalloc(PenetraDos *dos, _u16 *maxalloc);
 
 
 /* Get field e_
@@ -130,7 +130,7 @@ extern _u32 penetra_dos_get_e_maxalloc(PenetraDos *dos, _u16 *maxalloc);
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_e_ss(PenetraDos *dos, _u16 *ss);
+extern _u32 penetra_dos_get_ss(PenetraDos *dos, _u16 *ss);
 
 
 /* Get field e_
@@ -140,7 +140,7 @@ extern _u32 penetra_dos_get_e_ss(PenetraDos *dos, _u16 *ss);
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_e_sp(PenetraDos *dos, _u16 *sp);
+extern _u32 penetra_dos_get_sp(PenetraDos *dos, _u16 *sp);
 
 
 /* Get field e_
@@ -150,7 +150,7 @@ extern _u32 penetra_dos_get_e_sp(PenetraDos *dos, _u16 *sp);
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_e_csum(PenetraDos *dos, _u16 *csum);
+extern _u32 penetra_dos_get_csum(PenetraDos *dos, _u16 *csum);
 
 
 /* Get field e_
@@ -160,7 +160,7 @@ extern _u32 penetra_dos_get_e_csum(PenetraDos *dos, _u16 *csum);
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_e_ip(PenetraDos *dos, _u16 *ip);
+extern _u32 penetra_dos_get_ip(PenetraDos *dos, _u16 *ip);
 
 
 /* Get field e_
@@ -170,7 +170,7 @@ extern _u32 penetra_dos_get_e_ip(PenetraDos *dos, _u16 *ip);
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_e_cs(PenetraDos *dos, _u16 *cs);
+extern _u32 penetra_dos_get_cs(PenetraDos *dos, _u16 *cs);
 
 
 /* Get field e_
@@ -180,7 +180,7 @@ extern _u32 penetra_dos_get_e_cs(PenetraDos *dos, _u16 *cs);
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_e_lfarlc(PenetraDos *dos, _u16 *lfarlc);
+extern _u32 penetra_dos_get_lfarlc(PenetraDos *dos, _u16 *lfarlc);
 
 
 /* Get field e_
@@ -190,7 +190,7 @@ extern _u32 penetra_dos_get_e_lfarlc(PenetraDos *dos, _u16 *lfarlc);
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_e_ovno(PenetraDos *dos, _u16 *ovno);
+extern _u32 penetra_dos_get_ovno(PenetraDos *dos, _u16 *ovno);
 
 
 /* Get field e_
@@ -200,7 +200,7 @@ extern _u32 penetra_dos_get_e_ovno(PenetraDos *dos, _u16 *ovno);
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_e_oemid(PenetraDos *dos, _u16 *oemid);
+extern _u32 penetra_dos_get_oemid(PenetraDos *dos, _u16 *oemid);
 
 
 /* Get field e_
@@ -210,7 +210,7 @@ extern _u32 penetra_dos_get_e_oemid(PenetraDos *dos, _u16 *oemid);
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_e_oeminfo(PenetraDos *dos, _u16 *oeminfo);
+extern _u32 penetra_dos_get_oeminfo(PenetraDos *dos, _u16 *oeminfo);
 
 
 PENETRA_END_DECLS

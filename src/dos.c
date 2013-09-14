@@ -18,12 +18,12 @@ _u32 penetra_dos_get_signature(PenetraDos *dos, char **signature)
 	return PENETRA_SUCCESS;
 }
 
-_u32 penetra_dos_get_e_magic(PenetraDos *dos, char **signature)
+_u32 penetra_dos_get_magic(PenetraDos *dos, char **signature)
 {
 	return penetra_dos_get_signature(dos, signature);
 }
 
-_u32 penetra_dos_get_e_lfanew(PenetraDos *dos, _i32 *offset)
+_u32 penetra_dos_get_lfanew(PenetraDos *dos, _i32 *offset)
 {
 	if (NULL == dos) {
 		return PENETRA_EINVAL;	
@@ -38,7 +38,7 @@ _u32 penetra_dos_get_e_lfanew(PenetraDos *dos, _i32 *offset)
 	return PENETRA_SUCCESS;
 }
 
-_u32 penetra_dos_get_e_cblp(PenetraDos *dos, _u16 *cblp)
+_u32 penetra_dos_get_cblp(PenetraDos *dos, _u16 *cblp)
 {
 	if (NULL == dos) {
 		return PENETRA_EINVAL;
@@ -54,7 +54,7 @@ _u32 penetra_dos_get_e_cblp(PenetraDos *dos, _u16 *cblp)
 }
 
 
-_u32 penetra_dos_get_e_cp(PenetraDos *dos, _u16 *cp)
+_u32 penetra_dos_get_cp(PenetraDos *dos, _u16 *cp)
 {
 	if (NULL == dos) {
 		return PENETRA_EINVAL;
@@ -69,7 +69,7 @@ _u32 penetra_dos_get_e_cp(PenetraDos *dos, _u16 *cp)
 	return PENETRA_SUCCESS;
 }
 
-_u32 penetra_dos_get_e_crlc(PenetraDos *dos, _u16 *crlc)
+_u32 penetra_dos_get_crlc(PenetraDos *dos, _u16 *crlc)
 {
 	if (NULL == dos) {
 		return PENETRA_EINVAL;
@@ -84,7 +84,7 @@ _u32 penetra_dos_get_e_crlc(PenetraDos *dos, _u16 *crlc)
 	return PENETRA_SUCCESS;
 }
 
-_u32 penetra_dos_get_e_cparhdr(PenetraDos *dos, _u16 *cparhdr)
+_u32 penetra_dos_get_cparhdr(PenetraDos *dos, _u16 *cparhdr)
 {
 	if (NULL == dos) {
 		return PENETRA_EINVAL;
@@ -99,7 +99,7 @@ _u32 penetra_dos_get_e_cparhdr(PenetraDos *dos, _u16 *cparhdr)
 	return PENETRA_SUCCESS;
 }
 
-_u32 penetra_dos_get_e_minalloc(PenetraDos *dos, _u16 *minalloc)
+_u32 penetra_dos_get_minalloc(PenetraDos *dos, _u16 *minalloc)
 {
 	if (NULL == dos) {
 		return PENETRA_EINVAL;
@@ -114,7 +114,7 @@ _u32 penetra_dos_get_e_minalloc(PenetraDos *dos, _u16 *minalloc)
 	return PENETRA_SUCCESS;
 }
 
-_u32 penetra_dos_get_e_maxalloc(PenetraDos *dos, _u16 *maxalloc)
+_u32 penetra_dos_get_maxalloc(PenetraDos *dos, _u16 *maxalloc)
 {
 	if (NULL == dos) {
 		return PENETRA_EINVAL;
@@ -129,7 +129,7 @@ _u32 penetra_dos_get_e_maxalloc(PenetraDos *dos, _u16 *maxalloc)
 	return PENETRA_SUCCESS;
 }
 
-_u32 penetra_dos_get_e_ss(PenetraDos *dos, _u16 *ss)
+_u32 penetra_dos_get_ss(PenetraDos *dos, _u16 *ss)
 {
 	if (NULL == dos) {
 		return PENETRA_EINVAL;
@@ -144,7 +144,7 @@ _u32 penetra_dos_get_e_ss(PenetraDos *dos, _u16 *ss)
 	return PENETRA_SUCCESS;
 }
 
-_u32 penetra_dos_get_e_sp(PenetraDos *dos, _u16 *sp)
+_u32 penetra_dos_get_sp(PenetraDos *dos, _u16 *sp)
 {
 	if (NULL == dos) {
 		return PENETRA_EINVAL;
@@ -159,7 +159,7 @@ _u32 penetra_dos_get_e_sp(PenetraDos *dos, _u16 *sp)
 	return PENETRA_SUCCESS;
 }
 
-_u32 penetra_dos_get_e_csum(PenetraDos *dos, _u16 *csum)
+_u32 penetra_dos_get_csum(PenetraDos *dos, _u16 *csum)
 {
 	if (NULL == dos) {
 		return PENETRA_EINVAL;
@@ -175,7 +175,7 @@ _u32 penetra_dos_get_e_csum(PenetraDos *dos, _u16 *csum)
 }
 
 
-_u32 penetra_dos_get_e_ip(PenetraDos *dos, _u16 *ip)
+_u32 penetra_dos_get_ip(PenetraDos *dos, _u16 *ip)
 {
 	if (NULL == dos) {
 		return PENETRA_EINVAL;
@@ -191,7 +191,7 @@ _u32 penetra_dos_get_e_ip(PenetraDos *dos, _u16 *ip)
 }
 
 
-_u32 penetra_dos_get_e_cs(PenetraDos *dos, _u16 *cs)
+_u32 penetra_dos_get_cs(PenetraDos *dos, _u16 *cs)
 {
 	if (NULL == dos) {
 		return PENETRA_EINVAL;
@@ -206,7 +206,7 @@ _u32 penetra_dos_get_e_cs(PenetraDos *dos, _u16 *cs)
 	return PENETRA_SUCCESS;
 }
 
-_u32 penetra_dos_get_e_lfarlc(PenetraDos *dos, _u16 *lfarlc)
+_u32 penetra_dos_get_lfarlc(PenetraDos *dos, _u16 *lfarlc)
 {
 	if (NULL == dos) {
 		return PENETRA_EINVAL;
@@ -221,7 +221,7 @@ _u32 penetra_dos_get_e_lfarlc(PenetraDos *dos, _u16 *lfarlc)
 	return PENETRA_SUCCESS;
 }
 
-_u32 penetra_dos_get_e_ovno(PenetraDos *dos, _u16 *ovno)
+_u32 penetra_dos_get_ovno(PenetraDos *dos, _u16 *ovno)
 {
 	if (NULL == dos) {
 		return PENETRA_EINVAL;
@@ -236,7 +236,7 @@ _u32 penetra_dos_get_e_ovno(PenetraDos *dos, _u16 *ovno)
 	return PENETRA_SUCCESS;
 }
 
-_u32 penetra_dos_get_e_oemid(PenetraDos *dos, _u16 *oemid)
+_u32 penetra_dos_get_oemid(PenetraDos *dos, _u16 *oemid)
 {
 	if (NULL == dos) {
 		return PENETRA_EINVAL;
@@ -251,7 +251,7 @@ _u32 penetra_dos_get_e_oemid(PenetraDos *dos, _u16 *oemid)
 	return PENETRA_SUCCESS;
 }
 
-_u32 penetra_dos_get_e_oeminfo(PenetraDos *dos, _u16 *oeminfo)
+_u32 penetra_dos_get_oeminfo(PenetraDos *dos, _u16 *oeminfo)
 {
 	if (NULL == dos) {
 		return PENETRA_EINVAL;
