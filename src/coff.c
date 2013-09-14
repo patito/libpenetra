@@ -59,4 +59,80 @@ _u32 penetra_coff_get_nsections(PenetraCoff *coff, _u16 *nsections)
 	return PENETRA_SUCCESS;
 }
 
+_u32 penetra_coff_get_tstamp(PenetraCoff *coff, _u16 *tstamp)
+{
+	if (NULL == coff) {
+		return PENETRA_EINVAL;
+	}
+
+	if (NULL == tstamp) {
+		return PENETRA_EINVAL;
+	}
+
+	*tstamp = coff->tstamp;
+
+	return PENETRA_SUCCESS;
+}
+
+
+_u32 penetra_coff_get_symbol_table(PenetraCoff *coff, _u16 *symbol_table)
+{
+	if (NULL == coff) {
+		return PENETRA_EINVAL;
+	}
+
+	if (NULL == symbol_table) {
+		return PENETRA_EINVAL;
+	}
+
+	*symbol_table = coff->symbol_table;
+
+	return PENETRA_SUCCESS;
+}
+
+_u32 penetra_coff_get_nsymbols(PenetraCoff *coff, _u16 *nsymbols)
+{
+	if (NULL == coff) {
+		return PENETRA_EINVAL;
+	}
+
+	if (NULL == nsymbols) {
+		return PENETRA_EINVAL;
+	}
+
+	*nsymbols = coff->nsymbols;
+
+	return PENETRA_SUCCESS;
+}
+
+_u32 penetra_coff_get_size_opt_header(PenetraCoff *coff, _u16 *size)
+{
+	if (NULL == coff) {
+		return PENETRA_EINVAL;
+	}
+
+	if (NULL == size) {
+		return PENETRA_EINVAL;
+	}
+
+	*size = coff->size_opt_header;
+
+	return PENETRA_SUCCESS;
+}
+
+_u32 penetra_coff_get_characteristics(PenetraCoff *coff, _u16 *characteristics)
+{
+	if (NULL == coff) {
+		return PENETRA_EINVAL;
+	}
+
+	if (NULL == characteristics) {
+		return PENETRA_EINVAL;
+	}
+
+	*characteristics = coff->characteristics;
+
+	return PENETRA_SUCCESS;
+}
+
 

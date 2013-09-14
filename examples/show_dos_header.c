@@ -25,7 +25,7 @@ int main ()
 	_u16 oeminfo;
 
 	penetra_init(&pen);
-	penetra_open_malloc(&pen, "/home/benatto/Downloads/putty.exe");
+	penetra_open_malloc(&pen, "/bin/ls");
 	
 	penetra_get_dos(&pen, &dos);
 
