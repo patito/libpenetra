@@ -9,8 +9,11 @@ Building and Installing
 =======================
 
 $ ./autogen.sh
+
 $ ./configure
+
 $ make
+
 $ sudo make install
 
 :-)
