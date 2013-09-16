@@ -8,13 +8,10 @@ format known as Portable Executable (PE).
 Building and Installing
 =======================
 
-$ ./autogen.sh
-
-$ ./configure
-
-$ make
-
-$ sudo make install
+    $ ./autogen.sh
+    $ ./configure
+    $ make
+    $ sudo make install
 
 :-)
 
