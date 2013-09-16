@@ -11,6 +11,7 @@ lib_LTLIBRARIES=libpenetra.la
 
 libpenetra_la_SOURCES =  penetra.c \
 			coff.c \
+			optional.c \
 			dos.c
 
 
@@ -22,5 +23,7 @@ library_include_HEADERS	=	include/penetra/penetra.h \
 				include/penetra/types.h \
 				include/penetra/error.h \
 				include/penetra/defines.h \
+				include/penetra/optional.h \
+				include/penetra/nt.h \
 				include/penetra/dos.h \
 				include/penetra/coff.h

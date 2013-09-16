@@ -42,7 +42,7 @@ static _u32 _penetra_load_nt(Penetra *pen)
 		return PENETRA_EFAULT;
 	}
 
-	pen->nt = (PenetraNT *) (pen->mem + pen->dos->e_lfanew);
+	pen->nt->nt32 = (PenetraNT32 *) (pen->mem + pen->dos->e_lfanew);
 	
 	return PENETRA_SUCCESS;
 }

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 #include <penetra/penetra.h>
 
@@ -20,9 +21,13 @@ int main (int argc, char** argv)
  		printf("Is NOT a PE file!\n");
 	}
 
-	printf("%#x\n", pen.nt->signature);
-	printf("%#x\n", pen.nt->coff.arch);
-	printf("%#x\n", pen.nt->opt.Magic);
+	printf("%#x\n", pen.nt->nt32->signature);
+	printf("%#x\n", pen.nt->nt32->coff.arch);
+	printf("%#x\n", pen.nt->nt32->opt.Magic);
+
+	_u16 arch;
+	memcpy(&arch, (pen.mem + pen.dos->e_lfanew + 0x18), 2);
+	printf("%#x\n", arch);
 
 	penetra_finish(&pen);
 
