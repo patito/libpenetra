@@ -20,6 +20,10 @@ int main (int argc, char** argv)
  		printf("Is NOT a PE file!\n");
 	}
 
+	printf("%#x\n", pen.nt->signature);
+	printf("%#x\n", pen.nt->coff.arch);
+	printf("%#x\n", pen.nt->opt.Magic);
+
 	penetra_finish(&pen);
 
 	return 0;

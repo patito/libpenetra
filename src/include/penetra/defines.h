@@ -26,4 +26,8 @@
 /* NT SIGNATURE "PE00" */
 #define SIZEOF_NT_SIGNATURE 4
 
+/* PE ARCHITETURE */
+#define PE_ARCH32 0x10b
+#define PE_ARCH64 0x20b
+
 #endif /* _PENETRA_DEFINES_H_ */

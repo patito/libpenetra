@@ -7,20 +7,22 @@
 #include "error.h"
 #include "types.h"
 #include "dos.h"
+#include "nt.h"
 #include "coff.h"
+#include "optional.h"
 
 
 PENETRA_BEGIN_DECLS
 
 
 typedef struct {
-	_i32 fd;			/* Binary file descriptor */
-	_u32 size;			/* The binary size */
-	char *fname;		/* binary file name */
-	_u8 alloc_type;		/* Alloc type: mmap or malloc */
-	_u8 *mem;			/* Loaded binary */
-	PenetraDos *dos; 	/* IMAGE_DOS_HEADER */
-	PenetraCoff *coff; 	/* PE File Header */
+	_i32 fd;				/* Binary file descriptor */
+	_u32 size;				/* The binary size */
+	char *fname;			/* binary file name */
+	_u8 alloc_type;			/* Alloc type: mmap or malloc */
+	_u8 *mem;				/* Loaded binary */
+	PenetraDos *dos; 		/* IMAGE_DOS_HEADER */
+	PenetraNT *nt;           /* IMAGE NT HEADER */
 } Penetra;
 
 
@@ -124,6 +126,26 @@ extern _u32 penetra_get_dos(Penetra *pen, PenetraDos **dos);
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_get_coff(Penetra *pen, PenetraCoff **coff);
+
+
+/* Get Optional Header address.
+ *
+ * @param pen A valid Penetra object.
+ * @param dos A valid PenetraOptional object.
+ *
+ * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
+ */
+extern _u32 penetra_get_optional(Penetra *pen, PenetraOptional32 **opt);
+
+
+/* Get PE architeture.
+ *
+ * @param pen A valid Penetra object.
+ * @param arch The architeture saved.
+ *
+ * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
+ */
+extern _u32 penetra_get_arch(Penetra *pen, _u8 **arch);
 
 
 /****************************************************************************** 
