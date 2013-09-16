@@ -1,4 +1,4 @@
-/* IMAGE_DOS_HEADER
+/* IMAGE_FILE/COFF_HEADER
  *
  * 
  */
@@ -36,42 +36,42 @@ typedef struct {
 extern _u32 penetra_coff_get_arch(PenetraCoff *coff, _u16 *arch);
 
 
-/*
+/* Get the number of sections.
  *
  *
  */
 extern _u32 penetra_coff_get_nsections(PenetraCoff *coff, _u16 *nsections);
 
 
-/*
+/* Get the time date state
  *
  *
  */
 extern _u32 penetra_coff_get_tstamp(PenetraCoff *coff, _u16 *tstamp);
 
 
-/*
+/* Get file offset of the COFF symbol table
  *
  *
  */
 extern _u32 penetra_coff_get_symbol_table(PenetraCoff *coff, _u16 *symbol_table);
 
 
-/*
+/* Get the number of symbols.
  *
  *
  */
 extern _u32 penetra_coff_get_nsymbols(PenetraCoff *coff, _u16 *nsymbols);
 
 
-/*
+/* Get the size of optional header.
  *
  *
  */
 extern _u32 penetra_coff_get_size_opt_header(PenetraCoff *coff, _u16 *size);
 
 
-/*
+/* Get flags with information about the file.
  *
  *
  */
