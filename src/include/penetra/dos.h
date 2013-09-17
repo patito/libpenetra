@@ -40,7 +40,7 @@ typedef struct {
  * 
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_signature(PenetraDos *dos, char **signature);
+extern _u32 penetra_dos_get_signature(PenetraDos *dos, _u16 *signature);
 
 
 /* Get Image dos Signature, MZ.
@@ -50,7 +50,7 @@ extern _u32 penetra_dos_get_signature(PenetraDos *dos, char **signature);
  * 
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_magic(PenetraDos *dos, char **signature);
+extern _u32 penetra_dos_get_magic(PenetraDos *dos, _u16 *signature);
 
 
 /* Get field e_elfnew, the PE Header offset.

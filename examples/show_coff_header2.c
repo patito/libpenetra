@@ -4,17 +4,31 @@
 
 #include <penetra/penetra.h>
 
-int main ()
+int main (int argc, char **argv)
 {	
 	Penetra pen;
-	PenetraCoff *coff;
+	PenetraNT nt;
+	PenetraCoff coff;
+
+	if (argc < 2) {
+ 		printf("Usage: %s <pe-binary>\n", argv[0]);
+		return 1;
+	}
 
 	penetra_init(&pen);
-	penetra_open_malloc(&pen, "/home/benatto/Downloads/putty.exe");
+	penetra_open(&pen, argv[1]);
 
-	penetra_get_coff(&pen, &coff);
+	if (PENETRA_SUCCESS != penetra_is_pe(&pen)) {
+		printf("Not a PE File!\n");
+		penetra_finish(&pen);
+		return PENETRA_ERROR;
+	}
+
+	penetra_get_nt(&pen, &nt);
+	penetra_nt_get_coff(nt, &coff);
 	
-	printf("Machine = %#x\n", coff->arch);
+	printf("Machine = %#x\n", coff.machine);
+	printf("Number of Sections = %d\n", coff.nsections);
 
 	penetra_finish(&pen);
 

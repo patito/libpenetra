@@ -12,6 +12,7 @@ lib_LTLIBRARIES=libpenetra.la
 libpenetra_la_SOURCES =  penetra.c \
 			coff.c \
 			optional.c \
+			nt.c \
 			dos.c
 
 

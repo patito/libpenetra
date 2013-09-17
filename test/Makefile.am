@@ -13,4 +13,3 @@ LDADD=-L../src/.libs -lpenetra -lcunit
 
 main_test_SOURCES = 	penetra_test.c \
 			main_test.c
-AUTOMAKE_OPTIONS=serial-tests

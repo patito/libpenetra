@@ -3,7 +3,7 @@
 #include <penetra/coff.h>
 #include <penetra/error.h>
 
-static const MachineTable arch[] =
+static const MachineTable machine[] =
 {
 	{"Any machine type", 0x0},
 	{"Matsushita AM33", 0x1d3},
@@ -29,17 +29,17 @@ static const MachineTable arch[] =
 };
 
 
-_u32 penetra_coff_get_arch(PenetraCoff *coff, _u16 *arch)
+_u32 penetra_coff_get_machine(PenetraCoff *coff, _u16 *machine)
 {
 	if (NULL == coff) {
 		return PENETRA_EINVAL;	
 	}
 	
-	if (NULL == arch) {
+	if (NULL == machine) {
 		return PENETRA_EINVAL;
 	}
 
-	*arch = coff->arch;
+	*machine = coff->machine;
 
 	return PENETRA_SUCCESS;
 }

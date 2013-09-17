@@ -27,6 +27,31 @@ static _u32 _penetra_load_dos(Penetra *pen)
 	return PENETRA_SUCCESS;
 }
 
+static _u32 _penetra_set_arch32(Penetra *pen) 
+{
+	if (NULL == pen) {
+		return PENETRA_EINVAL;
+	}
+
+	pen->nt.unt.nt32 = (PenetraNT32*) (pen->mem + pen->dos->e_lfanew);
+	pen->arch = PE_ARCH32;
+	pen->nt.arch = PE_ARCH32;
+
+	return PENETRA_SUCCESS;
+}
+
+static _u32 _penetra_set_arch64(Penetra *pen) 
+{
+	if (NULL == pen) {
+		return PENETRA_EINVAL;
+	}
+
+	pen->nt.unt.nt64 = (PenetraNT64*) (pen->mem + pen->dos->e_lfanew);
+	pen->arch = PE_ARCH64;
+	pen->nt.arch = PE_ARCH64;
+
+	return PENETRA_SUCCESS;
+}
 
 static _u32 _penetra_load_nt(Penetra *pen)
 {
@@ -41,80 +66,15 @@ static _u32 _penetra_load_nt(Penetra *pen)
 	if (NULL == pen->dos) {
 		return PENETRA_EFAULT;
 	}
-
-	pen->nt->nt32 = (PenetraNT32 *) (pen->mem + pen->dos->e_lfanew);
 	
+	_penetra_set_arch32(pen);
+
+    if (PE_ARCH64 == pen->nt.unt.nt32->opt.magic) {
+		_penetra_set_arch64(pen);
+	}
+
 	return PENETRA_SUCCESS;
 }
-
-/*
-static _u32 _penetra_load_coff(Penetra *pen)
-{
-	if (NULL == pen) {
-		return PENETRA_EINVAL;
-	}
-
-	if (NULL == pen->mem) {
-		return PENETRA_EFAULT;
-	}
-
-	if (NULL == pen->dos) {
-		return PENETRA_EFAULT;
-	}
-
-	pen->coff = (PenetraCoff *) (pen->mem +  
-								 pen->dos->e_lfanew + 
-								 SIZEOF_NT_SIGNATURE);
-	
-	return PENETRA_SUCCESS;
-}
-
-static _u32 _penetra_load_optional(Penetra *pen)
-{
-	_u16 arch;
-
-	if (NULL == pen) {
-		return PENETRA_EINVAL;
-	}
-
-	if (NULL == pen->mem) {
-		return PENETRA_EFAULT;
-	}
-
-	if (NULL == pen->dos) {
-		return PENETRA_EFAULT;
-	}
-
-	//arch = (pen->mem + pen->dos->e_lfanew + 0x18);
-
-
-	memcpy(&arch, (pen->mem + pen->dos->e_lfanew + 0x18), 2);
-	
-	printf("%#x\n",  arch);
-	
-	return PENETRA_SUCCESS;
-}
-
-
-
-static _u32 _penetra_get_nt_signature(Penetra *pen, _u8 **sig)
-{
-	if (NULL == pen) {
-		return PENETRA_EINVAL;
-	}
-
-	if (NULL == pen->mem) {
-		return PENETRA_EFAULT;
-	}
-
-	if (NULL == pen->dos) {
-		return PENETRA_EFAULT;
-	}
-
-	*sig = (pen->mem + pen->dos->e_lfanew);
-	
-	return PENETRA_SUCCESS;
-}*/
 
 static _u32 _penetra_dealloc(Penetra *pen)
 {
@@ -271,16 +231,6 @@ static _u32 _penetra_load(Penetra *pen)
 		return error;
 	}
 
-/*	error = _penetra_load_coff(pen);
-	if (PENETRA_SUCCESS != error) {
-		return error;
-	}
-
-	error = _penetra_load_optional(pen);
-	if (PENETRA_SUCCESS != error) {
-		return error;
-	}
-*/
 	return error;
 }
 
@@ -298,6 +248,9 @@ _u32 penetra_init(Penetra *pen)
 	pen->size = 0;
 	pen->mem = NULL;
 	pen->fname = NULL;
+	pen->dos = NULL;
+	pen->nt.unt.nt32 = NULL;
+	pen->nt.unt.nt64 = NULL;
 
 	return PENETRA_SUCCESS;
 }
@@ -416,7 +369,8 @@ _u32 penetra_get_alloc_type(Penetra *pen, _u8 *alloc_type)
 
 _u32 penetra_is_pe(Penetra *pen)
 {
-	_i32 error;
+	_u16 sig = 0;
+	_u16 mz = 0;
 
 	if (NULL == pen) {
 		return PENETRA_EINVAL;
@@ -427,26 +381,21 @@ _u32 penetra_is_pe(Penetra *pen)
 	}
 
 	/* First two bytes are "MZ" or 0x5a4d  */
-	error =	memcmp(IMAGE_DOS_SIGNATURE, pen->mem, 2);
-	if (-1 == error) {
+	penetra_dos_get_signature(pen->dos, &mz);
+	if (MZ_SIGNATURE != mz) {
 		return PENETRA_ENOT_PE;
 	}
 
-	/* Checking NT signature PE00 */
-	/*_u8 *sig = NULL;
-	_penetra_get_nt_signature(pen, &sig);
-	if (NULL == sig) {
-		return PENETRA_EFAULT;
-	}
-
-	if (0 != strncmp((char*)sig, "PE", 2)) {
+	/* Checking NT signature PE00 0x4550 */
+	penetra_nt_get_signature(pen->nt, &sig);
+	if (NT_SIGNATURE != sig) {
 		return PENETRA_ENOT_PE;
-	}*/
+	}
 
 	return PENETRA_SUCCESS;
 }
 
-_u32 penetra_get_dos(Penetra *pen, PenetraDos **dos)
+_u32 penetra_get_dos(Penetra *pen, PenetraDos *dos)
 {
 	if (NULL == pen) {
 		return PENETRA_EINVAL;
@@ -456,12 +405,13 @@ _u32 penetra_get_dos(Penetra *pen, PenetraDos **dos)
 		return PENETRA_EINVAL;
 	}
 
-	*dos = pen->dos;
+	*dos = *pen->dos;
 
 	return PENETRA_SUCCESS;
 }
 
-/*_u32 penetra_get_coff(Penetra *pen, PenetraCoff **coff)
+
+_u32 penetra_get_coff(Penetra *pen, PenetraCoff *coff)
 {
 	if (NULL == pen) {
 		return PENETRA_EINVAL;
@@ -471,42 +421,45 @@ _u32 penetra_get_dos(Penetra *pen, PenetraDos **dos)
 		return PENETRA_EINVAL;
 	}
 
-	*coff = pen->coff;
+	switch (pen->arch) {
+		case PE_ARCH32:
+			*coff = pen->nt.unt.nt32->coff;
+			break;
+		case PE_ARCH64:
+			*coff = pen->nt.unt.nt32->coff;
+			break;
+		default: 
+			return PENETRA_EINVALID_ARCH;
+	}
 
 	return PENETRA_SUCCESS;
 }
 
-static _u32 _penetra_get_optional32(Penetra *pen, PenetraOptional32 **opt)
+_u32 penetra_get_nt(Penetra *pen, PenetraNT *nt)
 {
 	if (NULL == pen) {
 		return PENETRA_EINVAL;
 	}
 
-	if (NULL == opt) {
+	if (NULL == nt) {
 		return PENETRA_EINVAL;
 	}
 
-	*opt = pen->opt->opt32;
+	switch (pen->arch) {
+		case PE_ARCH32:
+			*nt = pen->nt;
+			break;
+		case PE_ARCH64:
+			*nt = pen->nt;
+			break;
+		default: 
+			return PENETRA_EINVALID_ARCH;
+	}
 
 	return PENETRA_SUCCESS;
 }
 
-static _u32 _penetra_get_optional64(Penetra *pen, PenetraOptional64 **opt)
-{
-	if (NULL == pen) {
-		return PENETRA_EINVAL;
-	}
-
-	if (NULL == opt) {
-		return PENETRA_EINVAL;
-	}
-
-	*opt = pen->opt->opt64;
-
-	return PENETRA_SUCCESS;
-}*/
-
-_u32 penetra_get_arch(Penetra *pen, _u8 **arch)
+_u32 penetra_get_arch(Penetra *pen, _u16 *arch)
 {
 
 	if (NULL == pen) {
@@ -517,15 +470,7 @@ _u32 penetra_get_arch(Penetra *pen, _u8 **arch)
 		return PENETRA_EFAULT;
 	}
 
-	if (NULL == pen->dos) {
-		return PENETRA_EFAULT;
-	}
-
-	*arch = (pen->mem + pen->dos->e_lfanew + 0x18);
-
-	//memcpy(arch, (pen->mem + pen->dos->e_lfanew + 0x18), 2);
-
-	//printf("%");
+	*arch = pen->arch;	
 
 	return PENETRA_SUCCESS;
 }

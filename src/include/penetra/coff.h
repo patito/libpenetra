@@ -13,7 +13,7 @@ PENETRA_BEGIN_DECLS
 
 
 typedef struct {
-	_u16 arch;				/* Machine */
+	_u16 machine;			/* Machine */
 	_u16 nsections;			/* Number of Sections */
 	_u32 tstamp;			/* Time Date Stamp*/
 	_u32 symbol_table;		/* Pointer To Symbol Table */
@@ -33,7 +33,7 @@ typedef struct {
  *
  *
  */
-extern _u32 penetra_coff_get_arch(PenetraCoff *coff, _u16 *arch);
+extern _u32 penetra_coff_get_machine(PenetraCoff *coff, _u16 *machine);
 
 
 /* Get the number of sections.

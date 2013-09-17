@@ -3,7 +3,7 @@
 #include <penetra/dos.h>
 #include <penetra/error.h>
 
-_u32 penetra_dos_get_signature(PenetraDos *dos, char **signature)
+_u32 penetra_dos_get_signature(PenetraDos *dos, _u16 *signature)
 {
 	if (NULL == dos) {
 		return PENETRA_EINVAL;	
@@ -13,12 +13,12 @@ _u32 penetra_dos_get_signature(PenetraDos *dos, char **signature)
 		return PENETRA_EINVAL;
 	}
 
-	*signature = (char *)dos;
+	*signature = dos->e_magic;
 
 	return PENETRA_SUCCESS;
 }
 
-_u32 penetra_dos_get_magic(PenetraDos *dos, char **signature)
+_u32 penetra_dos_get_magic(PenetraDos *dos, _u16 *signature)
 {
 	return penetra_dos_get_signature(dos, signature);
 }

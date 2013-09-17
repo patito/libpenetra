@@ -21,10 +21,11 @@
 
 
 /* MZ - The first 2 Bytes of PE */
-#define IMAGE_DOS_SIGNATURE "MZ"
+#define MZ_SIGNATURE 0x5a4d
 
 /* NT SIGNATURE "PE00" */
 #define SIZEOF_NT_SIGNATURE 4
+#define NT_SIGNATURE 0x4550
 
 /* PE ARCHITETURE */
 #define PE_ARCH32 0x10b
