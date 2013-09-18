@@ -26,7 +26,7 @@ int main (int argc, char **argv)
 	}
 	
 	penetra_get_nt(&pen, &nt);
-	penetra_nt_get_coff(nt, &coff);
+	penetra_nt_get_coff(&nt, &coff);
 	
 	penetra_coff_get_machine(&coff, &machine);
 	printf("Machine = %#x\n", machine);

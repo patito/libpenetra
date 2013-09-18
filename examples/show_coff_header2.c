@@ -25,7 +25,7 @@ int main (int argc, char **argv)
 	}
 
 	penetra_get_nt(&pen, &nt);
-	penetra_nt_get_coff(nt, &coff);
+	penetra_nt_get_coff(&nt, &coff);
 	
 	printf("Machine = %#x\n", coff.machine);
 	printf("Number of Sections = %d\n", coff.nsections);

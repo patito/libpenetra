@@ -39,21 +39,21 @@ typedef struct {
  *
  *
  */
-extern _u32 penetra_nt_get_signature(PenetraNT nt, _u16 *signature);
+extern _u32 penetra_nt_get_signature(PenetraNT *nt, _u16 *signature);
 
 
 /* Get optional header.
  *
  *
  */
-extern _u32 penetra_nt_get_optional(PenetraNT nt, PenetraOptional *opt);
+extern _u32 penetra_nt_get_optional(PenetraNT *nt, PenetraOptional *opt);
 
 
 /* Get coff header.
  *
  *
  */
-extern _u32 penetra_nt_get_coff(PenetraNT nt, PenetraCoff *coff);
+extern _u32 penetra_nt_get_coff(PenetraNT *nt, PenetraCoff *coff);
 
 
 PENETRA_END_DECLS

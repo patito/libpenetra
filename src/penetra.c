@@ -387,7 +387,7 @@ _u32 penetra_is_pe(Penetra *pen)
 	}
 
 	/* Checking NT signature PE00 0x4550 */
-	penetra_nt_get_signature(pen->nt, &sig);
+	penetra_nt_get_signature(&pen->nt, &sig);
 	if (NT_SIGNATURE != sig) {
 		return PENETRA_ENOT_PE;
 	}
