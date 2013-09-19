@@ -83,4 +83,4 @@ extern _u32 penetra_coff_get_characteristics(PenetraCoff *coff,
 PENETRA_END_DECLS
 
 
-#endif /* _PENETRA_DOS_H_ */
+#endif /* _PENETRA_COFF_H_ */

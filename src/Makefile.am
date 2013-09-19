@@ -27,4 +27,5 @@ library_include_HEADERS	=	include/penetra/penetra.h \
 				include/penetra/optional.h \
 				include/penetra/nt.h \
 				include/penetra/dos.h \
+				include/penetra/directory.h \
 				include/penetra/coff.h

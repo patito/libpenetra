@@ -1,4 +1,5 @@
 #include <string.h>
+#include <stdio.h>
 
 #include <penetra/error.h>
 #include <penetra/types.h>

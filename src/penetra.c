@@ -410,31 +410,6 @@ _u32 penetra_get_dos(Penetra *pen, PenetraDos *dos)
 	return PENETRA_SUCCESS;
 }
 
-
-_u32 penetra_get_coff(Penetra *pen, PenetraCoff *coff)
-{
-	if (NULL == pen) {
-		return PENETRA_EINVAL;
-	}
-
-	if (NULL == coff) {
-		return PENETRA_EINVAL;
-	}
-
-	switch (pen->arch) {
-		case PE_ARCH32:
-			*coff = pen->nt.unt.nt32->coff;
-			break;
-		case PE_ARCH64:
-			*coff = pen->nt.unt.nt32->coff;
-			break;
-		default: 
-			return PENETRA_EINVALID_ARCH;
-	}
-
-	return PENETRA_SUCCESS;
-}
-
 _u32 penetra_get_nt(Penetra *pen, PenetraNT *nt)
 {
 	if (NULL == pen) {

@@ -7,6 +7,7 @@
 #define _PENETRA_OPTIONAL_H_
 
 #include "types.h"
+#include "directory.h"
 
 
 PENETRA_BEGIN_DECLS
@@ -285,6 +286,8 @@ extern _u32 penetra_optional_get_loader_flags(PenetraOptional *opt,
  */
 extern _u32 penetra_optional_get_rva(PenetraOptional *opt, _u32 *rva);
 
+
+extern _u32 print_dirs(PenetraOptional *opt);
 
 PENETRA_END_DECLS
 
