@@ -23,10 +23,28 @@
 
 #include "types.h"
 #include "directory.h"
+#include "defines.h"
 
 
 PENETRA_BEGIN_DECLS
 
+typedef enum {
+	IMAGE_DIRECTORY_ENTRY_EXPORT			= 0,
+	IMAGE_DIRECTORY_ENTRY_IMPORT			= 1,
+	IMAGE_DIRECTORY_ENTRY_RESOURCE			= 2,
+	IMAGE_DIRECTORY_ENTRY_EXCEPTION			= 3,
+	IMAGE_DIRECTORY_ENTRY_SECURITY			= 4,
+	IMAGE_DIRECTORY_ENTRY_BASERELOC			= 5,
+	IMAGE_DIRECTORY_ENTRY_DEBUG				= 6,
+	IMAGE_DIRECTORY_ENTRY_COPYRIGHT			= 7,
+	IMAGE_DIRECTORY_ENTRY_GLOBALPTR			= 8,
+	IMAGE_DIRECTORY_ENTRY_TLS				= 9,
+	IMAGE_DIRECTORY_ENTRY_LOAD_CONFIG		= 10,
+	IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT		= 11,
+	IMAGE_DIRECTORY_ENTRY_IAT				= 12,
+	IMAGE_DIRECTORY_ENTRY_DELAY_IMPORT		= 13,
+	IMAGE_DIRECTORY_ENTRY_COM_DESCRIPTOR	= 14 
+} PenetraDirectoryEntry;
 
 typedef struct {
 	_u16 magic;					/*!< Architeture */
@@ -59,6 +77,7 @@ typedef struct {
 	_u32 size_heap_commit;		/*!< Size of Heap Commit */
 	_u32 loader_flags;			/*!< Loader Flags */
 	_u32 nrva;					/*!< Number of Rva and Sizes */
+	PenetraDirectory directory[NUMBEROF_DIRECTORY_ENTRIES];
 } PenetraOptional32;
 
 
@@ -92,6 +111,7 @@ typedef struct {
 	_u64 size_heap_commit;		/*!< Size of Heap Commit */
 	_u32 loader_flags;			/*!< Loader Flags */
 	_u32 nrva;					/*!< Number of Rva and Sizes */
+	PenetraDirectory directory[NUMBEROF_DIRECTORY_ENTRIES];
 } PenetraOptional64;
 
 

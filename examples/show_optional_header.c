@@ -34,6 +34,11 @@ int main (int argc, char** argv)
 	penetra_optional_get_size_headers(&opt, &sheaders);
 	printf("Size Of Headers = %#x\n", sheaders);
 
+	int i;
+	for (i = 0; i < 16; i++) {
+		printf("Size = %d \n", opt.uopt.opt32.directory[i].size);
+		printf("Virtual Address = %#x \n", opt.uopt.opt32.directory[i].vaddress);
+	}
 	penetra_finish(&pen);
 
 	return 0;

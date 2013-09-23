@@ -85,4 +85,9 @@
  */
 #define PE_ARCH64 0x20b
 
+/*! \def NUMBEROF_DIRECTORY_ENTRIES
+ *  \brief A macro that stores the number of directories entry.
+ */
+#define NUMBEROF_DIRECTORY_ENTRIES 16
+
 #endif /* _PENETRA_DEFINES_H_ */
