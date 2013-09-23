@@ -2,16 +2,52 @@ libpenetra
 ==========
 
 The libpenetra was created with the goal of studying the windows binary format
-known as Portable Executable (PE).
+known as Portable Executable (PE). With libpenetra you can access all info
+about PE binaries.
 
+Dependencies
+============
+
+The libpenetra has some dependencies.
+
+	* libxml2-dev
+	* libcunit1-dev (optional)
+
+If your distro is based on Debian:
+
+	$ sudo apt-get install libxml2-dev libcunit1-dev
+
+Otherwise:
+
+	* http://cunit.sourceforge.net/
+	* https://git.gnome.org/browse/libxml2/
 
 Building and Installing
 =======================
 
+Now that all dependencies were satisfied, we can build and install libpenetra. First clone the project. 
+
+	$ git clone https://github.com/patito/libpenetra.git
     $ ./autogen.sh
     $ ./configure
     $ make
     $ sudo make install
+
+Documentation
+=============
+
+To generate the doxygen documentation you can execute the command below.
+
+	$ cd doc
+	$ doxygen Doxyfile
+
+If you do not have doxygen, do this 1st bitch:
+
+	$ sudo ap-get install doxygen 
+
+If your distro is not based on Debian, you can see more info:
+
+	* http://www.stack.nl/~dimitri/doxygen/download.html
 
 :-)
 
