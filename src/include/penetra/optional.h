@@ -1,6 +1,21 @@
-/* IMAGE_OPTIONAL_HEADER
+/*
+ * The libpenetra is a library that could be used to access all PE
+ * (Portable Executable) information. It was developed to provide 
+ * a safe way to analyze malwares in PE binaries.
  *
- * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+ * implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
  */
 
 #ifndef _PENETRA_OPTIONAL_H_
@@ -14,81 +29,81 @@ PENETRA_BEGIN_DECLS
 
 
 typedef struct {
-	_u16 magic;					/* Architeture */
-	_u8 major_linker;			/* Major Linker Version */
-	_u8 minor_linker;			/* Minor Linker Version */
-	_u32 code_size;				/* Size of Code*/
-	_u32 size_init_data; 		/* Size of Initialized Data */
-	_u32 size_uninit_data; 		/* Size of Uniniatilized Data */
-	_u32 entry_point; 			/* Address Of Entry Point */
-	_u32 base_code; 			/* Base of Code */ 
-	_u32 base_data;				/* Base of Data */
-	_u32 image_base;			/* Image Base */
-	_u32 section_alignment;		/* Section Alignment */
-	_u32 file_alignment;		/* File Alignment */
-	_u16 major_os; 				/* Major Operating System Version */
-	_u16 minor_os; 				/* Minor Operating System Version */
-	_u16 major_image;			/* Major Image Version */
-	_u16 minor_image;			/* Minor Image Version */
-	_u16 major_subsystem;		/* Major Subsystem Version */
-	_u16 minor_subsystem;		/* Minor Subsystem Version */
-	_u32 reserved;				/* Reserverd1 */
-	_u32 size_image; 			/* Size of Image */
-	_u32 size_headers;			/* Size of Headers */
-	_u32 checksum;				/* Checksum */
-	_u16 subsystem;				/* Subsystem */
-	_u16 dll_characteristics;	/* Dll Characteristics */
-	_u32 size_stack_reserve;	/* Size of Stack Reserve */
-	_u32 size_stack_commit;		/* Size of Stack Commit */
-	_u32 size_heap_reserve;		/* Size of Heap Reserve */
-	_u32 size_heap_commit;		/* Size of Heap Commit */
-	_u32 loader_flags;			/* Loader Flags */
-	_u32 nrva;					/* Number of Rva and Sizes */
+	_u16 magic;					/*!< Architeture */
+	_u8 major_linker;			/*!< Major Linker Version */
+	_u8 minor_linker;			/*!< Minor Linker Version */
+	_u32 code_size;				/*!< Size of Code*/
+	_u32 size_init_data; 		/*!< Size of Initialized Data */
+	_u32 size_uninit_data; 		/*!< Size of Uniniatilized Data */
+	_u32 entry_point; 			/*!< Address Of Entry Point */
+	_u32 base_code; 			/*!< Base of Code */ 
+	_u32 base_data;				/*!< Base of Data */
+	_u32 image_base;			/*!< Image Base */
+	_u32 section_alignment;		/*!< Section Alignment */
+	_u32 file_alignment;		/*!< File Alignment */
+	_u16 major_os; 				/*!< Major Operating System Version */
+	_u16 minor_os; 				/*!< Minor Operating System Version */
+	_u16 major_image;			/*!< Major Image Version */
+	_u16 minor_image;			/*!< Minor Image Version */
+	_u16 major_subsystem;		/*!< Major Subsystem Version */
+	_u16 minor_subsystem;		/*!< Minor Subsystem Version */
+	_u32 reserved;				/*!< Reserverd1 */
+	_u32 size_image; 			/*!< Size of Image */
+	_u32 size_headers;			/*!< Size of Headers */
+	_u32 checksum;				/*!< Checksum */
+	_u16 subsystem;				/*!< Subsystem */
+	_u16 dll_characteristics;	/*!< Dll Characteristics */
+	_u32 size_stack_reserve;	/*!< Size of Stack Reserve */
+	_u32 size_stack_commit;		/*!< Size of Stack Commit */
+	_u32 size_heap_reserve;		/*!< Size of Heap Reserve */
+	_u32 size_heap_commit;		/*!< Size of Heap Commit */
+	_u32 loader_flags;			/*!< Loader Flags */
+	_u32 nrva;					/*!< Number of Rva and Sizes */
 } PenetraOptional32;
 
 
 typedef struct {
-	_u16 magic;					/* Architeture */
-	_u8 major_linker;			/* Major Linker Version */
-	_u8 minor_linker;			/* Minor Linker Version*/
-	_u32 code_size;				/* Size of Code*/
-	_u32 size_init_data; 		/* Size of Initialized Data */
-	_u32 size_uninit_data; 		/* Size of Uniniatilized Data */
-	_u32 entry_point; 			/* Address Of Entry Point */
-	_u32 base_code; 			/* Base of Code */ 
-	_u32 image_base;			/* Image Base */
-	_u32 section_alignment;		/* Section Alignment */
-	_u32 file_alignment;		/* File Alignment */
-	_u16 major_os; 				/* Major Operating System Version */
-	_u16 minor_os; 				/* Minor Operating System Version */
-	_u16 major_image;			/* Major Image Version */
-	_u16 minor_image;			/* Minor Image Version */
-	_u16 major_subsystem;		/* Major Subsystem Version */
-	_u16 minor_subsystem;		/* Minor Subsystem Version */
-	_u32 reserved;				/* Reserverd1 */
-	_u32 size_image; 			/* Size of Image */
-	_u32 size_headers;			/* Size of Headers */
-	_u32 checksum;				/* Checksum */
-	_u16 subsystem;				/* Subsystem */
-	_u16 dll_characteristics;	/* Dll Characteristics */
-	_u64 size_stack_reserve;	/* Size of Stack Reserve */
-	_u64 size_stack_commit;		/* Size of Stack Commit */
-	_u64 size_heap_reserve;		/* Size of Heap Reserve */
-	_u64 size_heap_commit;		/* Size of Heap Commit */
-	_u32 loader_flags;			/* Loader Flags */
-	_u32 nrva;					/* Number of Rva and Sizes */
+	_u16 magic;					/*!< Architeture */
+	_u8 major_linker;			/*!< Major Linker Version */
+	_u8 minor_linker;			/*!< Minor Linker Version*/
+	_u32 code_size;				/*!< Size of Code*/
+	_u32 size_init_data; 		/*!< Size of Initialized Data */
+	_u32 size_uninit_data; 		/*!< Size of Uniniatilized Data */
+	_u32 entry_point; 			/*!< Address Of Entry Point */
+	_u32 base_code; 			/*!< Base of Code */ 
+	_u32 image_base;			/*!< Image Base */
+	_u32 section_alignment;		/*!< Section Alignment */
+	_u32 file_alignment;		/*!< File Alignment */
+	_u16 major_os; 				/*!< Major Operating System Version */
+	_u16 minor_os; 				/*!< Minor Operating System Version */
+	_u16 major_image;			/*!< Major Image Version */
+	_u16 minor_image;			/*!< Minor Image Version */
+	_u16 major_subsystem;		/*!< Major Subsystem Version */
+	_u16 minor_subsystem;		/*!< Minor Subsystem Version */
+	_u32 reserved;				/*!< Reserverd1 */
+	_u32 size_image; 			/*!< Size of Image */
+	_u32 size_headers;			/*!< Size of Headers */
+	_u32 checksum;				/*!< Checksum */
+	_u16 subsystem;				/*!< Subsystem */
+	_u16 dll_characteristics;	/*!< Dll Characteristics */
+	_u64 size_stack_reserve;	/*!< Size of Stack Reserve */
+	_u64 size_stack_commit;		/*!< Size of Stack Commit */
+	_u64 size_heap_reserve;		/*!< Size of Heap Reserve */
+	_u64 size_heap_commit;		/*!< Size of Heap Commit */
+	_u32 loader_flags;			/*!< Loader Flags */
+	_u32 nrva;					/*!< Number of Rva and Sizes */
 } PenetraOptional64;
 
 
 typedef struct {
 	union {
-		PenetraOptional32 opt32;
-		PenetraOptional64 opt64;
+		PenetraOptional32 opt32;  /*!< Optional Header 32 bits. */
+		PenetraOptional64 opt64;  /*!< Optional Header 64 bits. */
 	} uopt;
-	_u16 arch;
+	_u16 arch;	/*!< Architeture: 32 or 64 bits. */
 } PenetraOptional;
 
-/* Get the machine architeture.
+/*! Get the machine architeture.
  *
  *
  */

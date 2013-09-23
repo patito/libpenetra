@@ -1,0 +1,9 @@
+To generate de documentation you must install doxygen first.
+
+$ sudo apt-get install doxygen
+
+Now you can use the command below:
+
+$ doxygen doxyfile
+
+;-)

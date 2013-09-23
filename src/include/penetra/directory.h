@@ -18,37 +18,22 @@
  *
  */
 
-#ifndef _PENETRA_DEFINES_H_
-#define _PENETRA_DEFINES_H_
+#ifndef _PENETRA_DIRECTORY_H_
+#define _PENETRA_DIRECTORY_H_
 
-#ifdef __cplusplus
-# define PENETRA_BEGIN_DECLS extern "C" {
-# define PENETRA_END_DECLS }
-#else
-# define PENETRA_BEGIN_DECLS /*  empty */
-# define PENETRA_END_DECLS /*  empty */
-#endif
+#include "types.h"
 
 
-/*  Unused variables */
-#define UNUSED(x) (void)x
+PENETRA_BEGIN_DECLS
 
 
-/* Alloc Type */
-#define PENETRA_ALLOC_NONE 	0
-#define PENETRA_ALLOC_MMAP 	1
-#define PENETRA_ALLOC_MALLOC 2
+typedef struct {
+	_u32 vaddress;		/* Virtual Address*/
+	_u32 size;
+} PenetraDirectory;
 
 
-/* MZ - The first 2 Bytes of PE */
-#define MZ_SIGNATURE 0x5a4d
+PENETRA_END_DECLS
 
-/* NT SIGNATURE "PE00" */
-#define SIZEOF_NT_SIGNATURE 4
-#define NT_SIGNATURE 0x4550
 
-/* PE ARCHITETURE */
-#define PE_ARCH32 0x10b
-#define PE_ARCH64 0x20b
-
-#endif /* _PENETRA_DEFINES_H_ */
+#endif /* _PENETRA_DIRECTORY_H_ */

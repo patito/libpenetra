@@ -1,6 +1,21 @@
-/* IMAGE_DOS_HEADER
+/*
+ * The libpenetra is a library that could be used to access all PE
+ * (Portable Executable) information. It was developed to provide 
+ * a safe way to analyze malwares in PE binaries.
  *
- * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+ * implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
  */
 
 #ifndef _PENETRA_DOS_H_
@@ -10,26 +25,28 @@
 
 PENETRA_BEGIN_DECLS
 
+
+
 typedef struct {
-	_u16 e_magic;		/* IMAGE_DOS_SIGNATURE "MZ" */
-	_u16 e_cblp;
-	_u16 e_cp;
-	_u16 e_crlc;
-	_u16 e_cparhdr;
-	_u16 e_minalloc;
-	_u16 e_maxalloc;
-	_u16 e_ss;
-	_u16 e_sp;
-	_u16 e_csum;
-	_u16 e_ip;
-	_u16 e_cs;
-	_u16 e_lfarlc;
-	_u16 e_ovno;
-	_u16 e_res[4];
-	_u16 e_oemid;
-	_u16 e_oeminfo;
-	_u16 e_res2[10];
-	_i32 e_lfanew;		/* offset of the PE header */
+	_u16 e_magic;		/*!< DOS Signature "MZ" */
+	_u16 e_cblp;		/*!< */
+	_u16 e_cp;			/*!< */
+	_u16 e_crlc;        /*!< */
+	_u16 e_cparhdr;		/*!< */
+	_u16 e_minalloc;	/*!< */
+	_u16 e_maxalloc;	/*!< */
+	_u16 e_ss;			/*!< */
+	_u16 e_sp;			/*!< */
+	_u16 e_csum;		/*!< */
+	_u16 e_ip;			/*!< */
+	_u16 e_cs;			/*!< */
+	_u16 e_lfarlc;		/*!< */
+	_u16 e_ovno;		/*!< */
+	_u16 e_res[4];		/*!< */
+	_u16 e_oemid;		/*!< */
+	_u16 e_oeminfo;		/*!< */
+	_u16 e_res2[10];	/*!< */
+	_i32 e_lfanew;		/*!< Offset of the PE header */
 } PenetraDos;
 
 
