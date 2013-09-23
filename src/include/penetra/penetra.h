@@ -14,20 +14,29 @@
 
 PENETRA_BEGIN_DECLS
 
-
+/*!
+ * \file penetra.h
+ * \brief Stores all information about binary file.
+ *   
+ * The Penetra structure is used to store all information about PE binary.
+ * The Penetra object provides methods to access the attributes, and all
+ * attributes should only be accessed via the following functions (getters and
+ * setters).
+ *
+ */
 typedef struct {
-	_i32 fd;				/* Binary file descriptor */
-	_u32 size;				/* The binary size */
-	char *fname;			/* binary file name */
-	_u8 alloc_type;			/* Alloc type: mmap or malloc */
-	_u8 *mem;				/* Loaded binary */
-	PenetraDos *dos; 		/* IMAGE_DOS_HEADER */
-	PenetraNT nt;           /* IMAGE NT HEADER */
-	_u16 arch;
+	_i32 fd;				/*!< Binary file descriptor. */
+	_u32 size;				/*!< The binary file size. */
+	char *fname;			/*!< Binary file name. */
+	_u8 alloc_type;			/*!< Alloc type: using mmap or malloc. */
+	_u8 *mem;				/*!< Loaded binary file. */
+	PenetraDos *dos; 		/*!< DOS header address. */
+	PenetraNT nt;           /*!< NT Header. */
+	_u16 arch;				/*!< Architeture: 32 or 64. */
 } Penetra;
 
 
-/* Initialize PE object (struct Penetra) 
+/*! Initialize PE object (struct Penetra).
  *
  * @param pen A valid Penetra object.
  *
@@ -36,8 +45,8 @@ typedef struct {
 extern _u32 penetra_init(Penetra *pen);
 
 
-/* Open the file name and load the PE binary to memory. To load
- * binary file to the memory mmap functions is used by default,
+/*! Open the binary file and load the PE binary to memory. To load
+ * binary file to the memory, mmap functions is used by default,
  * but you can change using penetra_set_alloc_type() or 
  * penetra_open_malloc(). The libpenetra provides two ways of
  * load: PENETRA_ALLOC_MMAP and PENETRA_ALLOC_MALLOC.
@@ -50,7 +59,7 @@ extern _u32 penetra_init(Penetra *pen);
 extern _u32 penetra_open(Penetra *pen, const char *fname);
 
 
-/* Open and load binary file using mmap() function.
+/*! Open and load binary file using mmap() function.
  *
  * @param pen A valid Penetra object.
  * @param fname A valid binary filename. Example: /tmp/putty.exe
@@ -60,7 +69,7 @@ extern _u32 penetra_open(Penetra *pen, const char *fname);
 extern _u32 penetra_open_mmap(Penetra *pen, const char *fname);
 
 
-/* Open and load binary file using malloc() function.
+/*! Open and load binary file using malloc() function.
  *
  * @param pen A valid Penetra object.
  * @param fname A valid binary filename. Example: /tmp/putty.exe
@@ -70,7 +79,7 @@ extern _u32 penetra_open_mmap(Penetra *pen, const char *fname);
 extern _u32 penetra_open_malloc(Penetra *pen, const char *fname);
 
 
-/* Release PE object (struct Penetra) 
+/*! Release PE object (struct Penetra).
  *
  * @param pen A valid Penetra object.
  *
@@ -79,7 +88,7 @@ extern _u32 penetra_open_malloc(Penetra *pen, const char *fname);
 extern _u32 penetra_finish(Penetra *pen);
 
 
-/* Verify if the binary file is a Portable Executable (PE).
+/*! Verify if the binary file is a Portable Executable (PE).
  *
  * @param pen A valid Penetra object.
  *
@@ -93,23 +102,17 @@ extern _u32 penetra_is_pe(Penetra *pen);
  *****************************************************************************/ 
 
 
-/* Get the alloc type.
+/*! Get the alloc type.
  *
  * @param pen A valid Penetra object.
  * @param alloc_type Saved alloc type.
  * 
- *  { ... } 
- *  _u8 atype;
- *  Penetra pen;
- *  penetra_get_alloc_type(&pen, &atype);
- *  { ... }
- *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_get_alloc_type(Penetra *pen, _u8 *alloc_type);
 
 
-/* Get IMAGE_DOS_HEADER address.
+/*! Get DOS header address.
  *
  * @param pen A valid Penetra object.
  * @param dos A valid PenetraDos object.
@@ -119,7 +122,7 @@ extern _u32 penetra_get_alloc_type(Penetra *pen, _u8 *alloc_type);
 extern _u32 penetra_get_dos(Penetra *pen, PenetraDos *dos);
 
 
-/* Get PE File Header address.
+/*! Get PE File Header address.
  *
  * @param pen A valid Penetra object.
  * @param dos A valid PenetraCoff object.
@@ -129,7 +132,7 @@ extern _u32 penetra_get_dos(Penetra *pen, PenetraDos *dos);
 extern _u32 penetra_get_coff(Penetra *pen, PenetraCoff *coff);
 
 
-/* Get Optional Header address.
+/*! Get Optional Header address.
  *
  * @param pen A valid Penetra object.
  * @param dos A valid PenetraOptional object.
@@ -139,7 +142,7 @@ extern _u32 penetra_get_coff(Penetra *pen, PenetraCoff *coff);
 extern _u32 penetra_get_optional(Penetra *pen, PenetraOptional *opt);
 
 
-/* Get NT Header.
+/*! Get NT Header address.
  *
  * @param pen A valid Penetra object.
  * @param dos A valid PenetraNT object.
@@ -149,7 +152,7 @@ extern _u32 penetra_get_optional(Penetra *pen, PenetraOptional *opt);
 extern _u32 penetra_get_nt(Penetra *pen, PenetraNT *nt);
 
 
-/* Get PE architeture.
+/*! Get PE architeture.
  *
  * @param pen A valid Penetra object.
  * @param arch The architeture saved.
@@ -164,7 +167,7 @@ extern _u32 penetra_get_arch(Penetra *pen, _u16 *arch);
  *****************************************************************************/ 
 
 
-/* Set the alloc type.
+/*! Set the alloc type.
  *
  * @param pen A valid Penetra object.
  * @param alloc_type The allocation type to be used.
