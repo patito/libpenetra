@@ -28,8 +28,8 @@ PENETRA_BEGIN_DECLS
 
 
 typedef struct {
-	_u32 vaddress;		/* Virtual Address*/
-	_u32 size;
+	_u32 vaddress;		/*!< The relative virtual address of the table. */
+	_u32 size;			/*!< The size of the table, in bytes. */
 } PenetraDirectory;
 
 

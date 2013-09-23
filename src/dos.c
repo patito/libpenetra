@@ -33,7 +33,7 @@ _u32 penetra_dos_get_signature(PenetraDos *dos, _u16 *signature)
 		return PENETRA_EINVAL;
 	}
 
-	*signature = dos->e_magic;
+	*signature = dos->magic;
 
 	return PENETRA_SUCCESS;
 }
@@ -53,7 +53,7 @@ _u32 penetra_dos_get_lfanew(PenetraDos *dos, _i32 *offset)
 		return PENETRA_EINVAL;
 	}
 
-	*offset = dos->e_lfanew;
+	*offset = dos->lfanew;
 		
 	return PENETRA_SUCCESS;
 }
@@ -68,7 +68,7 @@ _u32 penetra_dos_get_cblp(PenetraDos *dos, _u16 *cblp)
 		return PENETRA_EINVAL;
 	}
 
-	*cblp = dos->e_cblp;
+	*cblp = dos->cblp;
 	
 	return PENETRA_SUCCESS;
 }
@@ -84,7 +84,7 @@ _u32 penetra_dos_get_cp(PenetraDos *dos, _u16 *cp)
 		return PENETRA_EINVAL;
 	}
 
-	*cp = dos->e_cp;
+	*cp = dos->cp;
 	
 	return PENETRA_SUCCESS;
 }
@@ -99,7 +99,7 @@ _u32 penetra_dos_get_crlc(PenetraDos *dos, _u16 *crlc)
 		return PENETRA_EINVAL;
 	}
 
-	*crlc = dos->e_crlc;
+	*crlc = dos->crlc;
 	
 	return PENETRA_SUCCESS;
 }
@@ -114,7 +114,7 @@ _u32 penetra_dos_get_cparhdr(PenetraDos *dos, _u16 *cparhdr)
 		return PENETRA_EINVAL;
 	}
 
-	*cparhdr = dos->e_cparhdr;
+	*cparhdr = dos->cparhdr;
 	
 	return PENETRA_SUCCESS;
 }
@@ -129,7 +129,7 @@ _u32 penetra_dos_get_minalloc(PenetraDos *dos, _u16 *minalloc)
 		return PENETRA_EINVAL;
 	}
 
-	*minalloc = dos->e_minalloc;
+	*minalloc = dos->minalloc;
 	
 	return PENETRA_SUCCESS;
 }
@@ -144,7 +144,7 @@ _u32 penetra_dos_get_maxalloc(PenetraDos *dos, _u16 *maxalloc)
 		return PENETRA_EINVAL;
 	}
 
-	*maxalloc = dos->e_maxalloc;
+	*maxalloc = dos->maxalloc;
 	
 	return PENETRA_SUCCESS;
 }
@@ -159,7 +159,7 @@ _u32 penetra_dos_get_ss(PenetraDos *dos, _u16 *ss)
 		return PENETRA_EINVAL;
 	}
 
-	*ss = dos->e_ss;
+	*ss = dos->ss;
 	
 	return PENETRA_SUCCESS;
 }
@@ -174,7 +174,7 @@ _u32 penetra_dos_get_sp(PenetraDos *dos, _u16 *sp)
 		return PENETRA_EINVAL;
 	}
 
-	*sp = dos->e_sp;
+	*sp = dos->sp;
 	
 	return PENETRA_SUCCESS;
 }
@@ -189,7 +189,7 @@ _u32 penetra_dos_get_csum(PenetraDos *dos, _u16 *csum)
 		return PENETRA_EINVAL;
 	}
 
-	*csum = dos->e_csum;
+	*csum = dos->csum;
 	
 	return PENETRA_SUCCESS;
 }
@@ -205,7 +205,7 @@ _u32 penetra_dos_get_ip(PenetraDos *dos, _u16 *ip)
 		return PENETRA_EINVAL;
 	}
 
-	*ip = dos->e_ip;
+	*ip = dos->ip;
 	
 	return PENETRA_SUCCESS;
 }
@@ -221,7 +221,7 @@ _u32 penetra_dos_get_cs(PenetraDos *dos, _u16 *cs)
 		return PENETRA_EINVAL;
 	}
 
-	*cs = dos->e_cs;
+	*cs = dos->cs;
 	
 	return PENETRA_SUCCESS;
 }
@@ -236,7 +236,7 @@ _u32 penetra_dos_get_lfarlc(PenetraDos *dos, _u16 *lfarlc)
 		return PENETRA_EINVAL;
 	}
 
-	*lfarlc = dos->e_lfarlc;
+	*lfarlc = dos->lfarlc;
 	
 	return PENETRA_SUCCESS;
 }
@@ -251,7 +251,7 @@ _u32 penetra_dos_get_ovno(PenetraDos *dos, _u16 *ovno)
 		return PENETRA_EINVAL;
 	}
 
-	*ovno = dos->e_ovno;
+	*ovno = dos->ovno;
 	
 	return PENETRA_SUCCESS;
 }
@@ -266,7 +266,7 @@ _u32 penetra_dos_get_oemid(PenetraDos *dos, _u16 *oemid)
 		return PENETRA_EINVAL;
 	}
 
-	*oemid = dos->e_oemid;
+	*oemid = dos->oemid;
 	
 	return PENETRA_SUCCESS;
 }
@@ -281,7 +281,7 @@ _u32 penetra_dos_get_oeminfo(PenetraDos *dos, _u16 *oeminfo)
 		return PENETRA_EINVAL;
 	}
 
-	*oeminfo = dos->e_oeminfo;
+	*oeminfo = dos->oeminfo;
 	
 	return PENETRA_SUCCESS;
 }

@@ -26,54 +26,61 @@
 PENETRA_BEGIN_DECLS
 
 
+/*! \file dos.h
+ *  \brief Stores all info about DOS header.
+ */
 
+/*! \struct PenetraDos
+ *  \brief Provides PenetraDos object and methods getters 
+ *         to access all attributes.
+ */
 typedef struct {
-	_u16 e_magic;		/*!< DOS Signature "MZ" */
-	_u16 e_cblp;		/*!< */
-	_u16 e_cp;			/*!< */
-	_u16 e_crlc;        /*!< */
-	_u16 e_cparhdr;		/*!< */
-	_u16 e_minalloc;	/*!< */
-	_u16 e_maxalloc;	/*!< */
-	_u16 e_ss;			/*!< */
-	_u16 e_sp;			/*!< */
-	_u16 e_csum;		/*!< */
-	_u16 e_ip;			/*!< */
-	_u16 e_cs;			/*!< */
-	_u16 e_lfarlc;		/*!< */
-	_u16 e_ovno;		/*!< */
-	_u16 e_res[4];		/*!< */
-	_u16 e_oemid;		/*!< */
-	_u16 e_oeminfo;		/*!< */
-	_u16 e_res2[10];	/*!< */
-	_i32 e_lfanew;		/*!< Offset of the PE header */
+	_u16 magic;		/*!< DOS Signature "MZ" */
+	_u16 cblp;		/*!< */
+	_u16 cp;		/*!< */
+	_u16 crlc;      /*!< */
+	_u16 cparhdr;	/*!< */
+	_u16 minalloc;	/*!< */
+	_u16 maxalloc;	/*!< */
+	_u16 ss;		/*!< */
+	_u16 sp;		/*!< */
+	_u16 csum;		/*!< */
+	_u16 ip;		/*!< */
+	_u16 cs;		/*!< */
+	_u16 lfarlc;	/*!< */
+	_u16 ovno;		/*!< */
+	_u16 res[4];	/*!< */
+	_u16 oemid;		/*!< */
+	_u16 oeminfo;	/*!< */
+	_u16 res2[10];	/*!< */
+	_i32 lfanew;	/*!< Offset of the PE header */
 } PenetraDos;
 
 
-/* Get Image dos Signature, MZ.
+/* Get Image Dos Signature, MZ.
  *
  * @param dos A valid PenetraDos object.
- * @param signature Saved signature address.
+ * @param signature The signature saved.
  * 
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_dos_get_signature(PenetraDos *dos, _u16 *signature);
 
 
-/* Get Image dos Signature, MZ.
+/* Get the magic field on DOS header, MZ.
  *
  * @param dos A valid PenetraDos object.
- * @param signature Saved signature address.
+ * @param magic The magic field saved.
  * 
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_dos_get_magic(PenetraDos *dos, _u16 *signature);
+extern _u32 penetra_dos_get_magic(PenetraDos *dos, _u16 *magic);
 
 
-/* Get field e_elfnew, the PE Header offset.
+/* Get field e_elfnew, the PE File Header offset.
  *
  * @param dos A valid PenetraDos object.
- * @param offset Stored PE Header offset.
+ * @param offset The PE File Header offset saved.
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
@@ -110,7 +117,7 @@ extern _u32 penetra_dos_get_cp(PenetraDos *dos, _u16 *cp);
 extern _u32 penetra_dos_get_crlc(PenetraDos *dos, _u16 *crlc);
 
 
-/* Get field e_
+/* Get field e_cparhdr.
  *
  * @param dos A valid PenetraDos object.
  * @param 

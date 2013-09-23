@@ -28,12 +28,32 @@
 
 PENETRA_BEGIN_DECLS
 
+/*! \typedef _u8 uint8_t
+ */
 typedef uint8_t   _u8;
+
+/*! \typedef _u16 uint16_t
+ */
 typedef uint16_t  _u16;
+
+/*! \typedef _u32 uint32_t
+ */
 typedef uint32_t  _u32;
+
+/*! \typedef _i8 int8_t
+ */
 typedef int8_t    _i8;
+
+/*! \typedef _i16 int16_t
+ */
 typedef int16_t   _i16;
+
+/*! \typedef _i32 int32_t
+ */
 typedef int32_t   _i32;
+
+/*! \typedef _u64 uint64_t
+ */
 typedef uint64_t  _u64;
 
 PENETRA_END_DECLS

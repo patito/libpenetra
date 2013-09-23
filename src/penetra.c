@@ -53,7 +53,7 @@ static _u32 _penetra_set_arch32(Penetra *pen)
 		return PENETRA_EINVAL;
 	}
 
-	pen->nt.unt.nt32 = (PenetraNT32*) (pen->mem + pen->dos->e_lfanew);
+	pen->nt.unt.nt32 = (PenetraNT32*) (pen->mem + pen->dos->lfanew);
 	pen->arch = PE_ARCH32;
 	pen->nt.arch = PE_ARCH32;
 
@@ -66,7 +66,7 @@ static _u32 _penetra_set_arch64(Penetra *pen)
 		return PENETRA_EINVAL;
 	}
 
-	pen->nt.unt.nt64 = (PenetraNT64*) (pen->mem + pen->dos->e_lfanew);
+	pen->nt.unt.nt64 = (PenetraNT64*) (pen->mem + pen->dos->lfanew);
 	pen->arch = PE_ARCH64;
 	pen->nt.arch = PE_ARCH64;
 

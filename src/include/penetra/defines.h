@@ -18,9 +18,20 @@
  *
  */
 
+/*! \file defines.h
+ *	\brief Our macros used on the project.
+ */
+
 #ifndef _PENETRA_DEFINES_H_
 #define _PENETRA_DEFINES_H_
 
+/*! \def PENETRA_BEGIN_DECLS
+ *  \brief A macro that verify __cpluscplus (extern C)
+ *
+ *  PENETRA_BEGIN_DECLS should be used at the beginnning of your declarations,
+ *  so that C++ don't mangle their names. Use PENETRA_END_DECLS at the end of
+ *  C declarations.
+ */
 #ifdef __cplusplus
 # define PENETRA_BEGIN_DECLS extern "C" {
 # define PENETRA_END_DECLS }
@@ -34,21 +45,44 @@
 #define UNUSED(x) (void)x
 
 
-/* Alloc Type */
+/*! \def PENETRA_ALLOC_NONE
+ *  \brief A macro that defines none alloc type.
+ */
 #define PENETRA_ALLOC_NONE 	0
+
+/*! \def PENETRA_ALLOC_MMAP
+ *  \brief A macro that defines mmap as the alloc type.
+ */
 #define PENETRA_ALLOC_MMAP 	1
+
+/*! \def PENETRA_ALLOC_MALLOC
+ *  \brief A macro that defines malloc as the alloc type.
+ */
 #define PENETRA_ALLOC_MALLOC 2
 
-
-/* MZ - The first 2 Bytes of PE */
+/*! \def MZ_SIGNATURE
+ *  \brief A macro that stores the MZ Signature: 0x5a4d.
+ */
 #define MZ_SIGNATURE 0x5a4d
 
-/* NT SIGNATURE "PE00" */
+/*! \def SIZEOF_NT_SIGNATURE
+ *  \brief A macro that stores the size of NT Signature 4 bytes.
+ */
 #define SIZEOF_NT_SIGNATURE 4
+
+/*! \def NT_SIGNATURE
+ *  \brief A macro that stores the NT Signature: 0x4550.
+ */
 #define NT_SIGNATURE 0x4550
 
-/* PE ARCHITETURE */
+/*! \def PE_ARCH32
+ *  \brief A macro that stores the PE architeture 32 bits: 0x10b.
+ */
 #define PE_ARCH32 0x10b
+
+/*! \def PE_ARCH64
+ *  \brief A macro that stores the PE architeture 64 bits: 0x20b.
+ */
 #define PE_ARCH64 0x20b
 
 #endif /* _PENETRA_DEFINES_H_ */

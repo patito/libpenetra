@@ -23,23 +23,23 @@ int main (int argc, char **argv)
 
 	penetra_get_dos(&pen, &dos);
 
-	printf("e_magic = %#x\n", dos.e_magic);
-	printf("e_cblp = %d\n", dos.e_cblp);
-	printf("e_cp = %d\n", dos.e_cp);
-	printf("e_crlc = %d\n", dos.e_crlc);
-	printf("e_cparhdr = %d\n", dos.e_cparhdr);
-	printf("e_minalloc = %d\n", dos.e_minalloc);
-	printf("e_maxalloc = %d\n", dos.e_maxalloc);
-	printf("e_ss = %d\n", dos.e_ss);
-	printf("e_sp = %#x\n", dos.e_sp);
-	printf("e_csum = %d\n", dos.e_csum);
-	printf("e_ip = %d\n", dos.e_ip);
-	printf("e_cs = %d\n", dos.e_cs);
-	printf("e_lfarlc = %#x\n", dos.e_lfarlc);
-	printf("e_ovno = %d\n", dos.e_ovno);
-	printf("e_oemid = %d\n", dos.e_oemid);
-	printf("e_oeminfo = %d\n", dos.e_oeminfo);
-	printf("e_lfanew = %#x\n", dos.e_lfanew);
+	printf("magic = %#x\n", dos.magic);
+	printf("cblp = %d\n", dos.cblp);
+	printf("cp = %d\n", dos.cp);
+	printf("crlc = %d\n", dos.crlc);
+	printf("cparhdr = %d\n", dos.cparhdr);
+	printf("minalloc = %d\n", dos.minalloc);
+	printf("maxalloc = %d\n", dos.maxalloc);
+	printf("ss = %d\n", dos.ss);
+	printf("sp = %#x\n", dos.sp);
+	printf("csum = %d\n", dos.csum);
+	printf("ip = %d\n", dos.ip);
+	printf("cs = %d\n", dos.cs);
+	printf("lfarlc = %#x\n", dos.lfarlc);
+	printf("ovno = %d\n", dos.ovno);
+	printf("oemid = %d\n", dos.oemid);
+	printf("oeminfo = %d\n", dos.oeminfo);
+	printf("lfanew = %#x\n", dos.lfanew);
 
 	penetra_finish(&pen);
 
