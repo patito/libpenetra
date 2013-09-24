@@ -26,7 +26,13 @@
 
 PENETRA_BEGIN_DECLS
 
+/*! \file directory.h
+ *  \brief Contains data directory information. 
+ */
 
+/*! \struct PenetraDirectory
+ *  \brief Contains data directory information.
+ */
 typedef struct {
 	_u32 vaddress;		/*!< The relative virtual address of the table. */
 	_u32 size;			/*!< The size of the table, in bytes. */

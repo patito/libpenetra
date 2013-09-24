@@ -35,29 +35,29 @@ PENETRA_BEGIN_DECLS
  *         to access all attributes.
  */
 typedef struct {
-	_u16 magic;		/*!< DOS Signature "MZ" */
-	_u16 cblp;		/*!< */
-	_u16 cp;		/*!< */
-	_u16 crlc;      /*!< */
-	_u16 cparhdr;	/*!< */
-	_u16 minalloc;	/*!< */
-	_u16 maxalloc;	/*!< */
-	_u16 ss;		/*!< */
-	_u16 sp;		/*!< */
-	_u16 csum;		/*!< */
-	_u16 ip;		/*!< */
-	_u16 cs;		/*!< */
-	_u16 lfarlc;	/*!< */
-	_u16 ovno;		/*!< */
-	_u16 res[4];	/*!< */
-	_u16 oemid;		/*!< */
-	_u16 oeminfo;	/*!< */
-	_u16 res2[10];	/*!< */
-	_i32 lfanew;	/*!< Offset of the PE header */
+	_u16 magic;		/*!< DOS Signature "MZ". */
+	_u16 cblp;		/*!< Number of bytes on the last page of the file. */
+	_u16 cp;		/*!< Number of pages in file. */
+	_u16 crlc;      /*!< Relocations. */
+	_u16 cparhdr;	/*!< Size of the header in paragraphs. */
+	_u16 minalloc;	/*!< Minimum paragraphs to allocate. */
+	_u16 maxalloc;	/*!< Maximum paragraphs to allocate. */
+	_u16 ss;		/*!< Initial (relative) SS value. */
+	_u16 sp;		/*!< Initial SP value. */
+	_u16 csum;		/*!< Checksum. */
+	_u16 ip;		/*!< Initial IP value. */
+	_u16 cs;		/*!< Initial (relative) CS value. */
+	_u16 lfarlc;	/*!< File address of relocation table. */
+	_u16 ovno;		/*!< Overlay number. */
+	_u16 res[4];	/*!< Reserved. */
+	_u16 oemid;		/*!< OEM identifier (for e_oeminfo). */
+	_u16 oeminfo;	/*!< OEM information; e_oemid specific. */
+	_u16 res2[10];	/*!< Reserved. */
+	_i32 lfanew;	/*!< Offset of the PE header. */
 } PenetraDos;
 
 
-/* Get Image Dos Signature, MZ.
+/*! Get Image Dos Signature, MZ.
  *
  * @param dos A valid PenetraDos object.
  * @param signature The signature saved.
@@ -67,7 +67,7 @@ typedef struct {
 extern _u32 penetra_dos_get_signature(PenetraDos *dos, _u16 *signature);
 
 
-/* Get the magic field on DOS header, MZ.
+/*! Get the magic field on DOS header, "MZ" signature.
  *
  * @param dos A valid PenetraDos object.
  * @param magic The magic field saved.
@@ -77,7 +77,7 @@ extern _u32 penetra_dos_get_signature(PenetraDos *dos, _u16 *signature);
 extern _u32 penetra_dos_get_magic(PenetraDos *dos, _u16 *magic);
 
 
-/* Get field e_elfnew, the PE File Header offset.
+/*! Get field e_elfnew, the PE File Header offset.
  *
  * @param dos A valid PenetraDos object.
  * @param offset The PE File Header offset saved.
@@ -87,150 +87,150 @@ extern _u32 penetra_dos_get_magic(PenetraDos *dos, _u16 *magic);
 extern _u32 penetra_dos_get_lfanew(PenetraDos *dos, _i32 *offset);
 
 
-/* Get field e_cblp, that stores the number of bytes on last page of file.
+/*! Get field e_cblp, that stores the number of bytes on last page of file.
  *
  * @param dos A valid PenetraDos object.
- * @param cblp Saved the number of bytes on last page of file.
+ * @param cblp The number of bytes on last page of file saved.
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_dos_get_cblp(PenetraDos *dos, _u16 *cblp);
 
 
-/* Get field e_cp, that stores the number of 512 byte pages in the file
+/*! Get field e_cp, that stores the number of 512 byte pages in the file.
  *
  * @param dos A valid PenetraDos object.
- * @param cp Saved the number of pages in file.
+ * @param cp The number of pages in file saved.
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_dos_get_cp(PenetraDos *dos, _u16 *cp);
 
 
-/* Get field e_crlc, relocations.
+/*! Get field e_crlc, relocations.
  *
  * @param dos A valid PenetraDos object.
- * @param crlc Saved relocations.
+ * @param crlc The relocations saved.
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_dos_get_crlc(PenetraDos *dos, _u16 *crlc);
 
 
-/* Get field e_cparhdr.
+/*! Get field e_cparhdr, the size of header in paragraphs.
  *
  * @param dos A valid PenetraDos object.
- * @param 
+ * @param cparhdr The size of header saved.
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_dos_get_cparhdr(PenetraDos *dos, _u16 *cparhdr);
 
 
-/* Get field e_
+/*! Get field e_minalloc. Minimum extra paragraphs needed.
  *
  * @param dos A valid PenetraDos object.
- * @param 
+ * @param minalloc The minimum extra paragraphs saved.
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_dos_get_minalloc(PenetraDos *dos, _u16 *minalloc);
 
 
-/* Get field e_
+/*! Get field e_maxalloc. Maximum extra paragraphs needed.
  *
  * @param dos A valid PenetraDos object.
- * @param 
+ * @param maxalloc The maximum extra paragraphs saved.
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_dos_get_maxalloc(PenetraDos *dos, _u16 *maxalloc);
 
 
-/* Get field e_
+/*! Get field e_ss. Initial (relative) SS value.
  *
  * @param dos A valid PenetraDos object.
- * @param 
+ * @param ss The SS value saved.
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_dos_get_ss(PenetraDos *dos, _u16 *ss);
 
 
-/* Get field e_
+/*! Get field e_sp. Initial SP value.
  *
  * @param dos A valid PenetraDos object.
- * @param 
+ * @param sp The SP value saved.
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_dos_get_sp(PenetraDos *dos, _u16 *sp);
 
 
-/* Get field e_
+/*! Get field e_csum. The checksum.
  *
  * @param dos A valid PenetraDos object.
- * @param 
+ * @param csum The checksum saved.
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_dos_get_csum(PenetraDos *dos, _u16 *csum);
 
 
-/* Get field e_
+/*! Get field e_ip. Initial IP value.
  *
  * @param dos A valid PenetraDos object.
- * @param 
+ * @param ip The IP value saved.
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_dos_get_ip(PenetraDos *dos, _u16 *ip);
 
 
-/* Get field e_
+/*! Get field e_cs. Initial (relative) CS value.
  *
  * @param dos A valid PenetraDos object.
- * @param 
+ * @param cs The cs value saved.
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_dos_get_cs(PenetraDos *dos, _u16 *cs);
 
 
-/* Get field e_
+/*! Get field e_lfarlc. File address of relocation table.
  *
  * @param dos A valid PenetraDos object.
- * @param 
+ * @param lfarlc The file address of relocation table saved.
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_dos_get_lfarlc(PenetraDos *dos, _u16 *lfarlc);
 
 
-/* Get field e_
+/*! Get field e_ovno. Overlay number.
  *
  * @param dos A valid PenetraDos object.
- * @param 
+ * @param ovno The overlay number saved.
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_dos_get_ovno(PenetraDos *dos, _u16 *ovno);
 
 
-/* Get field e_
+/*! Get field e_oemid. OEM identifier.
  *
  * @param dos A valid PenetraDos object.
- * @param 
+ * @param oemid The OEM identifier saved.
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_dos_get_oemid(PenetraDos *dos, _u16 *oemid);
 
 
-/* Get field e_
+/*! Get field e_oeminfo. OEM information.
  *
  * @param dos A valid PenetraDos object.
- * @param 
+ * @param oeminfo The OEM information saved.
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */

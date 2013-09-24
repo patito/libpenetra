@@ -34,12 +34,14 @@
 
 PENETRA_BEGIN_DECLS
 
-/*!
- * \file penetra.h
- * \struct Penetra
- * \brief Stores all information about binary file.
+/*! \file penetra.h
+ *  \brief Stores all info about PE binary.  
+ */
+
+/*! \struct Penetra
+ *  \brief Stores all information about binary file.
  *   
- * \details The Penetra structure is used to store all information about PE binary.
+ *  \details The Penetra structure is used to store all information about PE binary.
  * The Penetra object provides methods to access the attributes, and all
  * attributes should only be accessed via the following functions (getters and
  * setters).

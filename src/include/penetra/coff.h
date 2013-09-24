@@ -118,7 +118,7 @@ extern _u32 penetra_coff_get_nsymbols(PenetraCoff *coff, _u16 *nsymbols);
 /*! Get the size of optional header.
  *
  * @param coff A valid Coff object.
- * @param nsections The size of Optional Header saved.
+ * @param size The size of Optional Header saved.
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
@@ -128,7 +128,7 @@ extern _u32 penetra_coff_get_size_opt_header(PenetraCoff *coff, _u16 *size);
 /*! Get flags with information about the file.
  *
  * @param coff A valid Coff object.
- * @param nsections The Characteristics saved.
+ * @param characteristics The Characteristics saved.
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
