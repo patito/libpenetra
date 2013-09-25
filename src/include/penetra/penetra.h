@@ -30,6 +30,7 @@
 #include "nt.h"
 #include "coff.h"
 #include "optional.h"
+#include "section.h"
 
 
 PENETRA_BEGIN_DECLS
@@ -55,6 +56,7 @@ typedef struct {
 	_u8 *mem;				/*!< Loaded binary file. */
 	PenetraDos *dos; 		/*!< DOS header address. */
 	PenetraNT nt;           /*!< NT Header. */
+	PenetraSection *section;	/*!< Section Header. */
 	_u16 arch;				/*!< Architeture: 32 or 64. */
 } Penetra;
 
