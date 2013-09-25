@@ -27,26 +27,26 @@
 
 _u32 penetra_optional_get_magic(PenetraOptional *opt, _u16 *magic)
 {
-	if (NULL == opt) {
-		return PENETRA_EINVAL;
-	}
+    if (NULL == opt) {
+        return PENETRA_EINVAL;
+    }
 
-	if (NULL == magic) {
-		return PENETRA_EINVAL;
-	}
+    if (NULL == magic) {
+        return PENETRA_EINVAL;
+    }
 
-	switch(opt->arch) {
-		case PE_ARCH32:
-			*magic = opt->uopt.opt32.magic;
-			break;
-		case PE_ARCH64:
-			*magic = opt->uopt.opt64.magic;
-			break;
-		default:
-			return PENETRA_EINVALID_ARCH;
-	}
+    switch(opt->arch) {
+        case PE_ARCH32:
+            *magic = opt->uopt.opt32.magic;
+            break;
+        case PE_ARCH64:
+            *magic = opt->uopt.opt64.magic;
+            break;
+        default:
+            return PENETRA_EINVALID_ARCH;
+    }
 
-	return PENETRA_SUCCESS;
+    return PENETRA_SUCCESS;
 }
 
 _u32 penetra_optional_get_major_linker(PenetraOptional *opt, _u16 *major)

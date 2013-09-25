@@ -29,75 +29,75 @@
 
 _u32 penetra_nt_get_optional(PenetraNT *nt, PenetraOptional *opt)
 {
-	if (NULL == nt) {
-		return PENETRA_EINVAL;
-	}
+    if (NULL == nt) {
+        return PENETRA_EINVAL;
+    }
 
-	if (NULL == opt) {
-		return PENETRA_EINVAL;
-	}
+    if (NULL == opt) {
+        return PENETRA_EINVAL;
+    }
 
-	switch(nt->arch) {
-		case PE_ARCH32:
-			opt->uopt.opt32 = nt->unt.nt32->opt;
-			opt->arch = PE_ARCH32;
-			break;
-		case PE_ARCH64:
-			opt->uopt.opt32 = nt->unt.nt32->opt;
-			opt->arch = PE_ARCH64;
-			break;
-		default:
-			return PENETRA_EINVALID_ARCH;
-	}
+    switch(nt->arch) {
+        case PE_ARCH32:
+            opt->uopt.opt32 = nt->unt.nt32->opt;
+            opt->arch = PE_ARCH32;
+            break;
+        case PE_ARCH64:
+            opt->uopt.opt32 = nt->unt.nt32->opt;
+            opt->arch = PE_ARCH64;
+            break;
+        default:
+            return PENETRA_EINVALID_ARCH;
+    }
 
-	return PENETRA_SUCCESS;
+    return PENETRA_SUCCESS;
 }
 
 _u32 penetra_nt_get_coff(PenetraNT *nt, PenetraCoff *coff)
 {
-	if (NULL == nt) {
-		return PENETRA_EINVAL;
-	}
+    if (NULL == nt) {
+        return PENETRA_EINVAL;
+    }
 
-	if (NULL == coff) {
-		return PENETRA_EINVAL;
-	}
+    if (NULL == coff) {
+        return PENETRA_EINVAL;
+    }
 
-	switch(nt->arch) {
-		case PE_ARCH32:
-			*coff = nt->unt.nt32->coff;
-			break;
-		case PE_ARCH64:
-			*coff = nt->unt.nt64->coff;
-			break;
-		default:
-			return PENETRA_EINVALID_ARCH;
-	}
+    switch(nt->arch) {
+        case PE_ARCH32:
+            *coff = nt->unt.nt32->coff;
+            break;
+        case PE_ARCH64:
+            *coff = nt->unt.nt64->coff;
+            break;
+        default:
+            return PENETRA_EINVALID_ARCH;
+    }
 
-	return PENETRA_SUCCESS;
+    return PENETRA_SUCCESS;
 }
 
 _u32 penetra_nt_get_signature(PenetraNT *nt, _u16 *signature)
 {
-	if (NULL == nt) {
-		return PENETRA_EINVAL;
-	}
+    if (NULL == nt) {
+        return PENETRA_EINVAL;
+    }
 
-	if (NULL == signature) {
-		return PENETRA_EINVAL;
-	}
+    if (NULL == signature) {
+        return PENETRA_EINVAL;
+    }
 
-	switch(nt->arch) {
-		case PE_ARCH32:
-			*signature = nt->unt.nt32->signature;
-			break;
-		case PE_ARCH64:
-			*signature = nt->unt.nt64->signature;
-			break;
-		default:
-			return PENETRA_EINVALID_ARCH;
-	}
+    switch(nt->arch) {
+        case PE_ARCH32:
+            *signature = nt->unt.nt32->signature;
+            break;
+        case PE_ARCH64:
+            *signature = nt->unt.nt64->signature;
+            break;
+        default:
+            return PENETRA_EINVALID_ARCH;
+    }
 
-	return PENETRA_SUCCESS;
+    return PENETRA_SUCCESS;
 }
 
