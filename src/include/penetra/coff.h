@@ -40,13 +40,13 @@ PENETRA_BEGIN_DECLS
  *
  */
 typedef struct {
-	_u16 machine;			/*!< Machine */
-	_u16 nsections;			/*!< Number of Sections */
-	_u32 tstamp;			/*!< Time Date Stamp */
-	_u32 symbol_table;		/*!< Pointer To Symbol Table */
-	_u32 nsymbols;			/*!< Number of Symbols */
-	_u16 size_opt_header;	/*!< Size of Optional Header */
-	_u16 characteristics;	/*!< Characteristics */
+    _u16 machine;           /*!< Machine */
+    _u16 nsections;         /*!< Number of Sections */
+    _u32 tstamp;            /*!< Time Date Stamp */
+    _u32 symbol_table;      /*!< Pointer To Symbol Table */
+    _u32 nsymbols;          /*!< Number of Symbols */
+    _u16 size_opt_header;   /*!< Size of Optional Header */
+    _u16 characteristics;   /*!< Characteristics */
 } PenetraCoff;
 
 
@@ -54,12 +54,12 @@ typedef struct {
  * \file coff.h
  * \struct MachineTable
  * \brief Stores information about Machine type. Meaning: Intel i860 and
- *		  type: 0x14d.
+ *        type: 0x14d.
  *   
  */
 typedef struct {
-	char *meaning;	/*!< Meaning. Example: "Intel i860". */
-	_u32 value;		/*!< Value. Example: 0x14d. */
+    char *meaning;  /*!< Meaning. Example: "Intel i860". */
+    _u32 value;     /*!< Value. Example: 0x14d. */
 } MachineTable;
 
 
@@ -133,7 +133,7 @@ extern _u32 penetra_coff_get_size_opt_header(PenetraCoff *coff, _u16 *size);
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_coff_get_characteristics(PenetraCoff *coff, 
-											 _u16 *characteristics);
+                                             _u16 *characteristics);
 
 
 

@@ -19,7 +19,7 @@
  */
 
 /*! \file defines.h
- *	\brief Our macros used on the project.
+ *  \brief Our macros used on the project.
  */
 
 #ifndef _PENETRA_DEFINES_H_
@@ -48,12 +48,12 @@
 /*! \def PENETRA_ALLOC_NONE
  *  \brief A macro that defines none alloc type.
  */
-#define PENETRA_ALLOC_NONE	0
+#define PENETRA_ALLOC_NONE  0
 
 /*! \def PENETRA_ALLOC_MMAP
  *  \brief A macro that defines mmap as the alloc type.
  */
-#define PENETRA_ALLOC_MMAP	1
+#define PENETRA_ALLOC_MMAP  1
 
 /*! \def PENETRA_ALLOC_MALLOC
  *  \brief A macro that defines malloc as the alloc type.

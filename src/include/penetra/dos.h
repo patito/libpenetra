@@ -35,25 +35,25 @@ PENETRA_BEGIN_DECLS
  *         to access all attributes.
  */
 typedef struct {
-	_u16 magic;		/*!< DOS Signature "MZ". */
-	_u16 cblp;		/*!< Number of bytes on the last page of the file. */
-	_u16 cp;		/*!< Number of pages in file. */
-	_u16 crlc;      /*!< Relocations. */
-	_u16 cparhdr;	/*!< Size of the header in paragraphs. */
-	_u16 minalloc;	/*!< Minimum paragraphs to allocate. */
-	_u16 maxalloc;	/*!< Maximum paragraphs to allocate. */
-	_u16 ss;		/*!< Initial (relative) SS value. */
-	_u16 sp;		/*!< Initial SP value. */
-	_u16 csum;		/*!< Checksum. */
-	_u16 ip;		/*!< Initial IP value. */
-	_u16 cs;		/*!< Initial (relative) CS value. */
-	_u16 lfarlc;	/*!< File address of relocation table. */
-	_u16 ovno;		/*!< Overlay number. */
-	_u16 res[4];	/*!< Reserved. */
-	_u16 oemid;		/*!< OEM identifier (for e_oeminfo). */
-	_u16 oeminfo;	/*!< OEM information; e_oemid specific. */
-	_u16 res2[10];	/*!< Reserved. */
-	_i32 lfanew;	/*!< Offset of the PE header. */
+    _u16 magic;     /*!< DOS Signature "MZ". */
+    _u16 cblp;      /*!< Number of bytes on the last page of the file. */
+    _u16 cp;        /*!< Number of pages in file. */
+    _u16 crlc;      /*!< Relocations. */
+    _u16 cparhdr;   /*!< Size of the header in paragraphs. */
+    _u16 minalloc;  /*!< Minimum paragraphs to allocate. */
+    _u16 maxalloc;  /*!< Maximum paragraphs to allocate. */
+    _u16 ss;        /*!< Initial (relative) SS value. */
+    _u16 sp;        /*!< Initial SP value. */
+    _u16 csum;      /*!< Checksum. */
+    _u16 ip;        /*!< Initial IP value. */
+    _u16 cs;        /*!< Initial (relative) CS value. */
+    _u16 lfarlc;    /*!< File address of relocation table. */
+    _u16 ovno;      /*!< Overlay number. */
+    _u16 res[4];    /*!< Reserved. */
+    _u16 oemid;     /*!< OEM identifier (for e_oeminfo). */
+    _u16 oeminfo;   /*!< OEM information; e_oemid specific. */
+    _u16 res2[10];  /*!< Reserved. */
+    _i32 lfanew;    /*!< Offset of the PE header. */
 } PenetraDos;
 
 

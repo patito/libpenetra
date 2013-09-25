@@ -36,17 +36,17 @@ PENETRA_BEGIN_DECLS
  *         PenetraExport object and all methods to access the attributes.
  */
 typedef struct {
-	_u32 characteristics;
-	_u32 tdstamp;
-	_u16 major_version;
-	_u16 minor_version;
-	_u32 name;
-	_u32 base;
-	_u32 nfunctions;
-	_u32 nnames;
-	_u32 func_address;
-	_u32 name_address;
-	_u32 ordinal_names_address;
+    _u32 characteristics;
+    _u32 tdstamp;
+    _u16 major_version;
+    _u16 minor_version;
+    _u32 name;
+    _u32 base;
+    _u32 nfunctions;
+    _u32 nnames;
+    _u32 func_address;
+    _u32 name_address;
+    _u32 ordinal_names_address;
 } PenetraExport;
 
 

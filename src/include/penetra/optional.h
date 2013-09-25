@@ -36,21 +36,21 @@ PENETRA_BEGIN_DECLS
  *  \brief Stores the directories entry.
  */
 typedef enum {
-	IMAGE_DIRECTORY_ENTRY_EXPORT			= 0,
-	IMAGE_DIRECTORY_ENTRY_IMPORT			= 1,
-	IMAGE_DIRECTORY_ENTRY_RESOURCE			= 2,
-	IMAGE_DIRECTORY_ENTRY_EXCEPTION			= 3,
-	IMAGE_DIRECTORY_ENTRY_SECURITY			= 4,
-	IMAGE_DIRECTORY_ENTRY_BASERELOC			= 5,
-	IMAGE_DIRECTORY_ENTRY_DEBUG				= 6,
-	IMAGE_DIRECTORY_ENTRY_COPYRIGHT			= 7,
-	IMAGE_DIRECTORY_ENTRY_GLOBALPTR			= 8,
-	IMAGE_DIRECTORY_ENTRY_TLS				= 9,
-	IMAGE_DIRECTORY_ENTRY_LOAD_CONFIG		= 10,
-	IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT		= 11,
-	IMAGE_DIRECTORY_ENTRY_IAT				= 12,
-	IMAGE_DIRECTORY_ENTRY_DELAY_IMPORT		= 13,
-	IMAGE_DIRECTORY_ENTRY_COM_DESCRIPTOR	= 14 
+    IMAGE_DIRECTORY_ENTRY_EXPORT            = 0,
+    IMAGE_DIRECTORY_ENTRY_IMPORT            = 1,
+    IMAGE_DIRECTORY_ENTRY_RESOURCE          = 2,
+    IMAGE_DIRECTORY_ENTRY_EXCEPTION         = 3,
+    IMAGE_DIRECTORY_ENTRY_SECURITY          = 4,
+    IMAGE_DIRECTORY_ENTRY_BASERELOC         = 5,
+    IMAGE_DIRECTORY_ENTRY_DEBUG             = 6,
+    IMAGE_DIRECTORY_ENTRY_COPYRIGHT         = 7,
+    IMAGE_DIRECTORY_ENTRY_GLOBALPTR         = 8,
+    IMAGE_DIRECTORY_ENTRY_TLS               = 9,
+    IMAGE_DIRECTORY_ENTRY_LOAD_CONFIG       = 10,
+    IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT      = 11,
+    IMAGE_DIRECTORY_ENTRY_IAT               = 12,
+    IMAGE_DIRECTORY_ENTRY_DELAY_IMPORT      = 13,
+    IMAGE_DIRECTORY_ENTRY_COM_DESCRIPTOR    = 14 
 } PenetraDirectoryEntry;
 
 
@@ -58,37 +58,37 @@ typedef enum {
  * \brief Stores all info about Optional Header (32 bits).
  */
 typedef struct {
-	_u16 magic;					/*!< Architeture */
-	_u8 major_linker;			/*!< Major Linker Version */
-	_u8 minor_linker;			/*!< Minor Linker Version */
-	_u32 code_size;				/*!< Size of Code*/
-	_u32 size_init_data;		/*!< Size of Initialized Data */
-	_u32 size_uninit_data;		/*!< Size of Uniniatilized Data */
-	_u32 entry_point;			/*!< Address Of Entry Point */
-	_u32 base_code;				/*!< Base of Code */ 
-	_u32 base_data;				/*!< Base of Data */
-	_u32 image_base;			/*!< Image Base */
-	_u32 section_alignment;		/*!< Section Alignment */
-	_u32 file_alignment;		/*!< File Alignment */
-	_u16 major_os;				/*!< Major Operating System Version */
-	_u16 minor_os;				/*!< Minor Operating System Version */
-	_u16 major_image;			/*!< Major Image Version */
-	_u16 minor_image;			/*!< Minor Image Version */
-	_u16 major_subsystem;		/*!< Major Subsystem Version */
-	_u16 minor_subsystem;		/*!< Minor Subsystem Version */
-	_u32 reserved;				/*!< Reserverd1 */
-	_u32 size_image;			/*!< Size of Image */
-	_u32 size_headers;			/*!< Size of Headers */
-	_u32 checksum;				/*!< Checksum */
-	_u16 subsystem;				/*!< Subsystem */
-	_u16 dll_characteristics;	/*!< Dll Characteristics */
-	_u32 size_stack_reserve;	/*!< Size of Stack Reserve */
-	_u32 size_stack_commit;		/*!< Size of Stack Commit */
-	_u32 size_heap_reserve;		/*!< Size of Heap Reserve */
-	_u32 size_heap_commit;		/*!< Size of Heap Commit */
-	_u32 loader_flags;			/*!< Loader Flags */
-	_u32 nrva;					/*!< Number of Rva and Sizes */
-	PenetraDirectory directory[NUMBEROF_DIRECTORY_ENTRIES];
+    _u16 magic;                 /*!< Architeture */
+    _u8 major_linker;           /*!< Major Linker Version */
+    _u8 minor_linker;           /*!< Minor Linker Version */
+    _u32 code_size;             /*!< Size of Code*/
+    _u32 size_init_data;        /*!< Size of Initialized Data */
+    _u32 size_uninit_data;      /*!< Size of Uniniatilized Data */
+    _u32 entry_point;           /*!< Address Of Entry Point */
+    _u32 base_code;             /*!< Base of Code */ 
+    _u32 base_data;             /*!< Base of Data */
+    _u32 image_base;            /*!< Image Base */
+    _u32 section_alignment;     /*!< Section Alignment */
+    _u32 file_alignment;        /*!< File Alignment */
+    _u16 major_os;              /*!< Major Operating System Version */
+    _u16 minor_os;              /*!< Minor Operating System Version */
+    _u16 major_image;           /*!< Major Image Version */
+    _u16 minor_image;           /*!< Minor Image Version */
+    _u16 major_subsystem;       /*!< Major Subsystem Version */
+    _u16 minor_subsystem;       /*!< Minor Subsystem Version */
+    _u32 reserved;              /*!< Reserverd1 */
+    _u32 size_image;            /*!< Size of Image */
+    _u32 size_headers;          /*!< Size of Headers */
+    _u32 checksum;              /*!< Checksum */
+    _u16 subsystem;             /*!< Subsystem */
+    _u16 dll_characteristics;   /*!< Dll Characteristics */
+    _u32 size_stack_reserve;    /*!< Size of Stack Reserve */
+    _u32 size_stack_commit;     /*!< Size of Stack Commit */
+    _u32 size_heap_reserve;     /*!< Size of Heap Reserve */
+    _u32 size_heap_commit;      /*!< Size of Heap Commit */
+    _u32 loader_flags;          /*!< Loader Flags */
+    _u32 nrva;                  /*!< Number of Rva and Sizes */
+    PenetraDirectory directory[NUMBEROF_DIRECTORY_ENTRIES];
 } PenetraOptional32;
 
 
@@ -96,36 +96,36 @@ typedef struct {
  *  \brief Stores all info about Optional Header (64 bits).
  */
 typedef struct {
-	_u16 magic;					/*!< Architeture */
-	_u8 major_linker;			/*!< Major Linker Version */
-	_u8 minor_linker;			/*!< Minor Linker Version*/
-	_u32 code_size;				/*!< Size of Code*/
-	_u32 size_init_data;		/*!< Size of Initialized Data */
-	_u32 size_uninit_data;		/*!< Size of Uniniatilized Data */
-	_u32 entry_point;			/*!< Address Of Entry Point */
-	_u32 base_code;				/*!< Base of Code */ 
-	_u32 image_base;			/*!< Image Base */
-	_u32 section_alignment;		/*!< Section Alignment */
-	_u32 file_alignment;		/*!< File Alignment */
-	_u16 major_os;				/*!< Major Operating System Version */
-	_u16 minor_os;				/*!< Minor Operating System Version */
-	_u16 major_image;			/*!< Major Image Version */
-	_u16 minor_image;			/*!< Minor Image Version */
-	_u16 major_subsystem;		/*!< Major Subsystem Version */
-	_u16 minor_subsystem;		/*!< Minor Subsystem Version */
-	_u32 reserved;				/*!< Reserverd1 */
-	_u32 size_image;			/*!< Size of Image */
-	_u32 size_headers;			/*!< Size of Headers */
-	_u32 checksum;				/*!< Checksum */
-	_u16 subsystem;				/*!< Subsystem */
-	_u16 dll_characteristics;	/*!< Dll Characteristics */
-	_u64 size_stack_reserve;	/*!< Size of Stack Reserve */
-	_u64 size_stack_commit;		/*!< Size of Stack Commit */
-	_u64 size_heap_reserve;		/*!< Size of Heap Reserve */
-	_u64 size_heap_commit;		/*!< Size of Heap Commit */
-	_u32 loader_flags;			/*!< Loader Flags */
-	_u32 nrva;					/*!< Number of Rva and Sizes */
-	PenetraDirectory directory[NUMBEROF_DIRECTORY_ENTRIES];
+    _u16 magic;                 /*!< Architeture */
+    _u8 major_linker;           /*!< Major Linker Version */
+    _u8 minor_linker;           /*!< Minor Linker Version*/
+    _u32 code_size;             /*!< Size of Code*/
+    _u32 size_init_data;        /*!< Size of Initialized Data */
+    _u32 size_uninit_data;      /*!< Size of Uniniatilized Data */
+    _u32 entry_point;           /*!< Address Of Entry Point */
+    _u32 base_code;             /*!< Base of Code */ 
+    _u32 image_base;            /*!< Image Base */
+    _u32 section_alignment;     /*!< Section Alignment */
+    _u32 file_alignment;        /*!< File Alignment */
+    _u16 major_os;              /*!< Major Operating System Version */
+    _u16 minor_os;              /*!< Minor Operating System Version */
+    _u16 major_image;           /*!< Major Image Version */
+    _u16 minor_image;           /*!< Minor Image Version */
+    _u16 major_subsystem;       /*!< Major Subsystem Version */
+    _u16 minor_subsystem;       /*!< Minor Subsystem Version */
+    _u32 reserved;              /*!< Reserverd1 */
+    _u32 size_image;            /*!< Size of Image */
+    _u32 size_headers;          /*!< Size of Headers */
+    _u32 checksum;              /*!< Checksum */
+    _u16 subsystem;             /*!< Subsystem */
+    _u16 dll_characteristics;   /*!< Dll Characteristics */
+    _u64 size_stack_reserve;    /*!< Size of Stack Reserve */
+    _u64 size_stack_commit;     /*!< Size of Stack Commit */
+    _u64 size_heap_reserve;     /*!< Size of Heap Reserve */
+    _u64 size_heap_commit;      /*!< Size of Heap Commit */
+    _u32 loader_flags;          /*!< Loader Flags */
+    _u32 nrva;                  /*!< Number of Rva and Sizes */
+    PenetraDirectory directory[NUMBEROF_DIRECTORY_ENTRIES];
 } PenetraOptional64;
 
 
@@ -133,14 +133,14 @@ typedef struct {
  *  \brief Stores all info about Optional Header (64 bits).
  */
 typedef struct {
-	/*! \union uopt
-	 *  \brief Union to store Optional Header 32 or 64 bits.
-	 */
-	union {
-		PenetraOptional32 opt32;  /*!< Optional Header 32 bits. */
-		PenetraOptional64 opt64;  /*!< Optional Header 64 bits. */
-	} uopt;
-	_u16 arch;	/*!< Architeture: 32 or 64 bits. */
+    /*! \union uopt
+     *  \brief Union to store Optional Header 32 or 64 bits.
+     */
+    union {
+        PenetraOptional32 opt32;  /*!< Optional Header 32 bits. */
+        PenetraOptional64 opt64;  /*!< Optional Header 64 bits. */
+    } uopt;
+    _u16 arch;  /*!< Architeture: 32 or 64 bits. */
 } PenetraOptional;
 
 
@@ -162,7 +162,7 @@ extern _u32 penetra_optional_get_magic(PenetraOptional *opt, _u16 *magic);
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_optional_get_major_linker(PenetraOptional *opt, 
-											  _u16 *major);
+                                              _u16 *major);
 
 
 /*! Get The minor version number of the linker.
@@ -173,7 +173,7 @@ extern _u32 penetra_optional_get_major_linker(PenetraOptional *opt,
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_optional_get_minor_linker(PenetraOptional *opt, 
-											  _u16 *minor);
+                                              _u16 *minor);
 
 
 /*! Get the size of the code section, in bytes, or the sum of all
@@ -196,7 +196,7 @@ extern _u32 penetra_optional_get_code_size(PenetraOptional *opt, _u32 *size);
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_optional_get_size_init_data(PenetraOptional *opt, 
-												_u32 *size);
+                                                _u32 *size);
 
 
 /*! Get the size of the uninitialized data section, in bytes, or the
@@ -209,7 +209,7 @@ extern _u32 penetra_optional_get_size_init_data(PenetraOptional *opt,
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_optional_get_size_uninit_data(PenetraOptional *opt, 
-												  _u32 *size);
+                                                  _u32 *size);
 
 
 /*! Get a pointer to the entry point function, relative to the image
@@ -267,7 +267,7 @@ extern _u32 penetra_optional_get_image_base(PenetraOptional *opt, _u32 *image);
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_optional_get_section_alignment(PenetraOptional *opt,
-												   _u32 *alignment);
+                                                   _u32 *alignment);
 
 
 /*! Get the alignment of the raw data of sections in the image file, in bytes.
@@ -278,7 +278,7 @@ extern _u32 penetra_optional_get_section_alignment(PenetraOptional *opt,
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_optional_get_file_alignment(PenetraOptional *opt, 
-												_u32 *alignment);
+                                                _u32 *alignment);
 
 
 /*! Get the major version number of the required operating system.
@@ -309,7 +309,7 @@ extern _u32 penetra_optional_get_minor_os(PenetraOptional *opt, _u16 *version);
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_optional_get_major_image(PenetraOptional *opt, 
-											 _u16 *version);
+                                             _u16 *version);
 
 
 /*! Get the mainor version number of the image.
@@ -320,7 +320,7 @@ extern _u32 penetra_optional_get_major_image(PenetraOptional *opt,
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_optional_get_minor_image(PenetraOptional *opt, 
-											 _u16 *version);
+                                             _u16 *version);
 
 
 /*! Get the major version number of the subsystem.
@@ -331,7 +331,7 @@ extern _u32 penetra_optional_get_minor_image(PenetraOptional *opt,
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_optional_get_major_subsystem(PenetraOptional *opt,
-												 _u16 *version);
+                                                 _u16 *version);
 
 
 /*! Get the minor version number of the subsystem.
@@ -342,7 +342,7 @@ extern _u32 penetra_optional_get_major_subsystem(PenetraOptional *opt,
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_optional_get_minor_subsystem(PenetraOptional *opt, 
-												 _u16 *version);
+                                                 _u16 *version);
 
 
 /*! This member is reserved and must be 0.
@@ -394,7 +394,7 @@ extern _u32 penetra_optional_get_checksum(PenetraOptional *opt, _u32 *checksum);
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_optional_get_subsystem(PenetraOptional *opt, 
-										   _u16 *subsystem);
+                                           _u16 *subsystem);
 
 
 /*! Get the DLL characteristics of the image.
@@ -405,7 +405,7 @@ extern _u32 penetra_optional_get_subsystem(PenetraOptional *opt,
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_optional_get_characteristics(PenetraOptional *opt,
-												 _u16 *characteristics);
+                                                 _u16 *characteristics);
 
 
 /*! Get the number of bytes to reserve for the stack.
@@ -416,7 +416,7 @@ extern _u32 penetra_optional_get_characteristics(PenetraOptional *opt,
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_optional_get_size_stack_reserve(PenetraOptional *opt,
-													_u64 *size);
+                                                    _u64 *size);
 
 
 /*! Get the number of bytes to commit for the stack.
@@ -427,7 +427,7 @@ extern _u32 penetra_optional_get_size_stack_reserve(PenetraOptional *opt,
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_optional_get_size_stack_commit(PenetraOptional *opt,
-												   _u64 *size);
+                                                   _u64 *size);
 
 
 /*! Get the number of bytes to reserve for the local heap.
@@ -438,7 +438,7 @@ extern _u32 penetra_optional_get_size_stack_commit(PenetraOptional *opt,
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_optional_get_size_heap_reserve(PenetraOptional *opt,
-												  _u64 *size);
+                                                  _u64 *size);
 
 
 /*! Get the number of bytes to commit for the local heap.
@@ -449,7 +449,7 @@ extern _u32 penetra_optional_get_size_heap_reserve(PenetraOptional *opt,
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_optional_get_size_heap_commit(PenetraOptional *opt,
-												  _u64 *size);
+                                                  _u64 *size);
 
 
 /*! This member is obsolete.
@@ -460,7 +460,7 @@ extern _u32 penetra_optional_get_size_heap_commit(PenetraOptional *opt,
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
 extern _u32 penetra_optional_get_loader_flags(PenetraOptional *opt,
-											  _u32 *flags);
+                                              _u32 *flags);
 
 
 /*! Get the number of directory entries in the remainder of the optional header.
