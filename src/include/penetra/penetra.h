@@ -54,7 +54,7 @@ typedef struct {
 	char *fname;			/*!< Binary file name. */
 	_u8 alloc_type;			/*!< Alloc type: using mmap or malloc. */
 	_u8 *mem;				/*!< Loaded binary file. */
-	PenetraDos *dos; 		/*!< DOS header address. */
+	PenetraDos *dos;		/*!< DOS header address. */
 	PenetraNT nt;           /*!< NT Header. */
 	PenetraSection *section;	/*!< Section Header. */
 	_u16 arch;				/*!< Architeture: 32 or 64. */

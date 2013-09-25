@@ -54,11 +54,11 @@ typedef struct {
  * \file coff.h
  * \struct MachineTable
  * \brief Stores information about Machine type. Meaning: Intel i860 and
- * 		  type: 0x14d.
+ *		  type: 0x14d.
  *   
  */
 typedef struct {
-	char *meaning; 	/*!< Meaning. Example: "Intel i860". */
+	char *meaning;	/*!< Meaning. Example: "Intel i860". */
 	_u32 value;		/*!< Value. Example: 0x14d. */
 } MachineTable;
 

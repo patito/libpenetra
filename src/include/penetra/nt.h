@@ -37,34 +37,34 @@ PENETRA_BEGIN_DECLS
  *  \brief Stores information about NT header (32 bits).
  */
 typedef struct {
-	_u32 signature;
-	PenetraCoff coff;
-	PenetraOptional32 opt;	
+    _u32 signature;
+    PenetraCoff coff;
+    PenetraOptional32 opt;  
 } PenetraNT32;
 
 /*! \struct PenetraNT64
  *  \brief Stores information about NT header (32 bits).
  */
 typedef struct {
-	_u32 signature;
-	PenetraCoff coff;
-	PenetraOptional64 opt;	
+    _u32 signature;
+    PenetraCoff coff;
+    PenetraOptional64 opt;  
 } PenetraNT64;
 
 /*! \struct PenetraNT
  *  \brief Stores information about NT header.
  */
 typedef struct {
-	/*! \union unt
+    /*! \union unt
      *  \brief The Union NT (unt) is a union to store two kind of structures,
-	 *         PenetraNT32 and PenetraNT64, structure that will be used will 
+     *         PenetraNT32 and PenetraNT64, structure that will be used will 
      *         depend on the architecture of binary file.
      */
-	union {
-		PenetraNT32 *nt32; /*!< A pointer to NT header (Optional 32 bits). */
-		PenetraNT64 *nt64; /*!< A pointer to NT header (Optional 64 bits). */
-	} unt;
-	_u16 arch; /*!< Stores the architeture: 32 or 64 bits. */
+    union {
+        PenetraNT32 *nt32; /*!< A pointer to NT header (Optional 32 bits). */
+        PenetraNT64 *nt64; /*!< A pointer to NT header (Optional 64 bits). */
+    } unt;
+    _u16 arch; /*!< Stores the architeture: 32 or 64 bits. */
 } PenetraNT;
 
 

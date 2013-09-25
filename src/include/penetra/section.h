@@ -43,20 +43,20 @@ typedef struct {
      *  \brief  Stores file address and total size of section.
      */
 	union {
-		_u32 paddress; 			/*!< The file address. */
-		_u32 vsize; 			/*!< The total size of the section when loaded into memory,
+		_u32 paddress;			/*!< The file address. */
+		_u32 vsize;				/*!< The total size of the section when loaded into memory,
                                      in bytes */
 	} misc;
-	_u32 vaddress; 				/*!< The address of the first byte of the section when
+	_u32 vaddress;				/*!< The address of the first byte of the section when
                                      loaded into memory, relative to the image base.*/
 	_u32 raw_data_size;			/*!< The size of the initialized data on disk, in bytes. */
 	_u32 raw_data_pointer;		/*!< A file pointer to the first page within the COFF file. */
-	_u32 relocations; 			/*!< A file pointer to the beginning of the relocation
+	_u32 relocations;			/*!< A file pointer to the beginning of the relocation
                                      entries for the section. */
-	_u32 line_numbers_pointer; 	/*!< (DEPRECATED) A file pointer to the beginning of
+	_u32 line_numbers_pointer;	/*!< (DEPRECATED) A file pointer to the beginning of
                                      the line-number entries for the section. */
 	_u16 nrelocations;			/*!< The number of relocation entries for the section. */
-	_u16 nline; 				/*!< (DEPRECATED) The number of line-number entries for
+	_u16 nline;					/*!< (DEPRECATED) The number of line-number entries for
                                      the section. */
 	_u32 characteristics;		/*!< The characteristics of the image. */
 } PenetraSection;
