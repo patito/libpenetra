@@ -18,6 +18,7 @@ int main (int argc, char** argv)
     _u32 paddress;
     _u32 vaddress;
     _u32 rdsize;
+    _u32 characteristics;
     _u32 rdpointer;
     _u16 i;
     _u8 name[8] = {0};
@@ -39,27 +40,32 @@ int main (int argc, char** argv)
     penetra_coff_get_nsections(&coff, &nsec);
     penetra_get_section(&pen, &section);
 
+    printf("--------------------------------------------\n");
 	printf("Number Of Sections = %d\n", nsec);
+    printf("--------------------------------------------\n");
     for (i = 0; i < nsec; i++) {
         penetra_section_get_name(section, name, i);
-        printf("Section Name: %s\n", name);
-
-        penetra_section_get_nrelocations(section, &nreloc, i);
-        printf("Number Of Relocations: %d\n", nreloc);
-
-        penetra_section_get_paddress(section, &paddress, i);
-        printf("Physical Address: %#x\n", paddress);
+        printf("Name: %s\n", name);
 
         penetra_section_get_vaddress(section, &vaddress, i);
         printf("Virtual Address: %#x\n", vaddress);
 
+        penetra_section_get_paddress(section, &paddress, i);
+        printf("Physical Address: %#x\n", paddress);
+
         penetra_section_get_raw_data_size(section, &rdsize, i);
-        printf("Raw Data Size: %d\n", rdsize);
+        printf("Raw Data Size: %d bytes\n", rdsize);
 
         penetra_section_get_raw_data_pointer(section, &rdpointer, i);
-        printf("Raw Data Pointer: %#x\n", rdsize);
+        printf("Raw Data Pointer: %#x\n", rdpointer);
 
-        printf("\n--------------------------------------------\n");
+        penetra_section_get_nrelocations(section, &nreloc, i);
+        printf("Number Of Relocations: %d\n", nreloc);
+
+        penetra_section_get_characteristics(section, &characteristics, i);
+        printf("Characteristics: %#x\n", characteristics);
+        
+        printf("--------------------------------------------\n");
     }
 
     penetra_finish(&pen);

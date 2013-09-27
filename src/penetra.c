@@ -520,5 +520,3 @@ _u32 penetra_get_arch(Penetra *pen, _u16 *arch)
     return PENETRA_SUCCESS;
 }
 
-
-
