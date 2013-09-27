@@ -147,6 +147,16 @@ extern _u32 penetra_get_alloc_type(Penetra *pen, _u8 *alloc_type);
 extern _u32 penetra_get_dos(Penetra *pen, PenetraDos *dos);
 
 
+/*! Get Section header address.
+ *
+ * @param pen A valid Penetra object.
+ * @param section A valid PenetraSection object.
+ *
+ * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
+ */
+extern _u32 penetra_get_section(Penetra *pen, PenetraSection **section);
+
+
 /*! Get PE File Header address.
  *
  * @param pen A valid Penetra object.

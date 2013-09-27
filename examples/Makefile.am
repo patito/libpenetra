@@ -13,6 +13,7 @@ bin_PROGRAMS = 	is_pe_file \
 		show_coff_header2 \
 		show_dos_header \
 		show_dos_header2 \
+		show_sections \
 		show_optional_header
 
 
@@ -27,6 +28,7 @@ show_coff_header_SOURCES = show_coff_header.c
 show_coff_header2_SOURCES = show_coff_header2.c
 show_dos_header_SOURCES = show_dos_header.c
 show_dos_header2_SOURCES = show_dos_header2.c
+show_sections_SOURCES = show_sections.c
 show_optional_header_SOURCES = show_optional_header.c
 
 AM_CFLAGS = -ggdb -Wall -Wextra -Werror -I../src/include

@@ -13,6 +13,7 @@ libpenetra_la_SOURCES =  penetra.c \
 			coff.c \
 			optional.c \
 			nt.c \
+			section.c \
 			dos.c
 
 

@@ -106,9 +106,24 @@ static _u32 _penetra_load_sections(Penetra *pen)
         return PENETRA_EFAULT;
     }
 
-    pen->section = (PenetraSection *) (pen->mem + pen->dos->lfanew +  sizeof(pen->nt));
+    switch(pen->arch) {
+        case PE_ARCH32:
+            pen->section = (PenetraSection *) (pen->mem + 
+                                               pen->dos->lfanew + 
+                                               sizeof(PenetraNT32));
+            break;
+        case PE_ARCH64:
+            pen->section = (PenetraSection *) (pen->mem +
+                                               pen->dos->lfanew +
+                                               sizeof(PenetraNT64));
+            break;
+        default:
+            printf("Unknow architeture.\n");
+            return PENETRA_EINVALID_ARCH;
+    }
 
-    return PENETRA_SUCCESS;
+    
+	return PENETRA_SUCCESS;
 }
 
 static _u32 _penetra_dealloc(Penetra *pen)
@@ -446,6 +461,21 @@ _u32 penetra_get_dos(Penetra *pen, PenetraDos *dos)
     }
 
     *dos = *pen->dos;
+
+    return PENETRA_SUCCESS;
+}
+
+_u32 penetra_get_section(Penetra *pen, PenetraSection **section)
+{
+    if (NULL == pen) {
+        return PENETRA_EINVAL;
+    }
+
+    if (NULL == section) {
+        return PENETRA_EINVAL;
+    }
+
+    *section = pen->section;
 
     return PENETRA_SUCCESS;
 }
