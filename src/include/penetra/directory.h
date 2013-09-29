@@ -34,9 +34,29 @@ PENETRA_BEGIN_DECLS
  *  \brief Contains data directory information.
  */
 typedef struct {
-    _u32 vaddress;      /*!< The relative virtual address of the table. */
+    _u32 rva;      /*!< The relative virtual address of the table. */
     _u32 size;          /*!< The size of the table, in bytes. */
 } PenetraDirectory;
+
+
+/*! Get the relative virtual address.
+ *
+ * @param dir A valid PenetraDirecotry object.
+ * @param rva The relative virtual address saved.
+ *
+ * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
+ */
+extern _u32 penetra_directory_get_rva(PenetraDirectory *dir, _u32 *rva);
+
+
+/*! Get the size of the table.
+ *
+ * @param dir A valid PenetraDirectory object.
+ * @param size The size of the table saved.
+ *
+ * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
+ */
+extern _u32 penetra_directory_get_size(PenetraDirectory *dir, _u32 *size);
 
 
 PENETRA_END_DECLS

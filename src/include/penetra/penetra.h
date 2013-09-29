@@ -121,6 +121,15 @@ extern _u32 penetra_finish(Penetra *pen);
  */
 extern _u32 penetra_is_pe(Penetra *pen);
 
+/*! Convert Relative Virtual Address to Offset.
+ *
+ * @param pen A valid Penetra object.
+ * @param rva The relative virtual address.
+ * @param offset The offset saved.
+ *
+ * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
+ */
+extern _u32 penetra_rva2ofs(Penetra *pen, _u32 rva, _u32 *offset);
 
 /****************************************************************************** 
  ********************************** GETTERS *********************************** 

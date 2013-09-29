@@ -520,3 +520,38 @@ _u32 penetra_get_arch(Penetra *pen, _u16 *arch)
     return PENETRA_SUCCESS;
 }
 
+_u32 penetra_rva2ofs(Penetra *pen, _u32 rva, _u32 *offset)
+{
+    _u32 i;
+    _u16 nsec;
+
+    if (NULL == pen) {
+        return PENETRA_EINVAL;
+    }    
+
+    if (NULL == pen->section) {
+        return PENETRA_EFAULT;
+    }
+
+	switch(pen->arch) {
+        case PE_ARCH32:
+            nsec = pen->nt.unt.nt32->coff.nsections;
+            break;
+        case PE_ARCH64:
+            nsec = pen->nt.unt.nt64->coff.nsections;
+            break;
+        default:
+            return PENETRA_EINVALID_ARCH;
+    }
+
+    for(i = 0; i < nsec; i++) {
+        if ((rva >= pen->section[i].vaddress) && 
+           (rva < (pen->section[i].vaddress + pen->section[i].raw_data_size))) {
+            *offset = rva - pen->section[i].vaddress + pen->section[i].raw_data_pointer;
+        }
+    }
+
+    return PENETRA_SUCCESS;
+}
+
+

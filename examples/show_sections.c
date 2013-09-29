@@ -12,10 +12,14 @@ int main (int argc, char** argv)
     Penetra pen;
     PenetraNT nt;
     PenetraCoff coff;
+    PenetraOptional opt;
+    PenetraDirectory dir;
     PenetraSection *section;
     _u16 nsec;
     _u16 nreloc;
     _u32 paddress;
+    _u32 rva;
+    _u32 offset;
     _u32 vaddress;
     _u32 rdsize;
     _u32 characteristics;
@@ -67,6 +71,14 @@ int main (int argc, char** argv)
         
         printf("--------------------------------------------\n");
     }
+
+    penetra_nt_get_optional(&nt, &opt);
+
+    penetra_optional_get_directory(&opt, IMAGE_DIRECTORY_ENTRY_IMPORT, &dir);
+
+    penetra_directory_get_rva(&dir, &rva);
+
+    penetra_rva2ofs(&pen, rva, &offset);
 
     penetra_finish(&pen);
 

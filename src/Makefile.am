@@ -14,6 +14,7 @@ libpenetra_la_SOURCES =  penetra.c \
 			optional.c \
 			nt.c \
 			section.c \
+			directory.c \
 			dos.c
 
 
@@ -31,4 +32,5 @@ library_include_HEADERS	=	include/penetra/penetra.h \
 				include/penetra/directory.h \
 				include/penetra/export.h \
 				include/penetra/section.h \
+				include/penetra/import.h \
 				include/penetra/coff.h

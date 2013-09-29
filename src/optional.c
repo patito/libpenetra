@@ -756,3 +756,32 @@ _u32 penetra_optional_get_rva(PenetraOptional *opt, _u32 *rva)
     return PENETRA_SUCCESS;
 }
 
+_u32 penetra_optional_get_directory(PenetraOptional *opt,
+                                    PenetraDirectoryEntry entry,
+                                    PenetraDirectory *dir)
+{
+    if (NULL == opt) {
+        return PENETRA_EINVAL;
+    }
+
+    if (NULL == dir) {
+        return PENETRA_EINVAL;
+    }
+
+    if (entry > (NUMBEROF_DIRECTORY_ENTRIES - 1)) {
+        return PENETRA_EINVAL;
+    }
+
+    switch(opt->arch) {
+        case PE_ARCH32: 
+            *dir = opt->uopt.opt32.directory[entry];
+            break;
+        case PE_ARCH64:
+            *dir = opt->uopt.opt64.directory[entry];
+            break;
+        default:
+            return PENETRA_EINVALID_ARCH;
+    }
+
+    return PENETRA_SUCCESS;
+}

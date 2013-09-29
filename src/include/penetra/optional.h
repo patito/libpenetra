@@ -463,14 +463,17 @@ extern _u32 penetra_optional_get_loader_flags(PenetraOptional *opt,
                                               _u32 *flags);
 
 
-/*! Get the number of directory entries in the remainder of the optional header.
+/*! Get a data directory.
  *
  * @param opt A valid PenetraOptional object.
- * @param rva The number of directory entries saved.
+ * @param entry The penetra directory entry.
+ * @param dir The data directory saved.
  *
  * @return PENETRA_SUCCESS in case of success, otherwise an ERROR.
  */
-extern _u32 penetra_optional_get_rva(PenetraOptional *opt, _u32 *rva);
+extern _u32 penetra_optional_get_directory(PenetraOptional *opt,
+                                           PenetraDirectoryEntry entry,
+                                           PenetraDirectory *dir);
 
 
 PENETRA_END_DECLS

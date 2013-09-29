@@ -2,14 +2,17 @@
 #include <string.h>
 
 #include <penetra/penetra.h>
+#include <penetra/import.h>
 
 int main (int argc, char** argv)
 {
 	Penetra pen;
 	PenetraNT nt;
+    PenetraDirectory dir;
 	PenetraOptional opt;
 	_u16 magic;
 	_u32 sheaders;
+    _u32 offset;
 
 	if (argc < 2) {
 		printf("Usage: %s <bin>\n", *argv);
@@ -34,12 +37,14 @@ int main (int argc, char** argv)
 	penetra_optional_get_size_headers(&opt, &sheaders);
 	printf("Size Of Headers = %#x\n", sheaders);
 
-	int i;
-	for (i = 0; i < 16; i++) {
-		printf("Size = %d \n", opt.uopt.opt32.directory[i].size);
-		printf("Virtual Address = %#x \n", opt.uopt.opt32.directory[i].vaddress);
-	}
-	penetra_finish(&pen);
+	penetra_optional_get_directory(&opt, 12, &dir);
+	printf("RVA = %#x\n", dir.rva);
+	printf("Size = %d\n", dir.size);
+	
+    penetra_rva2ofs(&pen, dir.rva, &offset);
+	printf("Offset = %#x\n", offset);
+
+    penetra_finish(&pen);
 
 	return 0;
 }
