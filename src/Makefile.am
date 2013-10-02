@@ -33,4 +33,6 @@ library_include_HEADERS	=	include/penetra/penetra.h \
 				include/penetra/export.h \
 				include/penetra/section.h \
 				include/penetra/import.h \
+				include/penetra/load_config.h \
+				include/penetra/resource.h \
 				include/penetra/coff.h

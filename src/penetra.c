@@ -301,9 +301,11 @@ _u32 penetra_init(Penetra *pen)
     pen->fd = -1;
     pen->alloc_type = PENETRA_ALLOC_MMAP;
     pen->size = 0;
+    pen->arch = 0;
     pen->mem = NULL;
     pen->fname = NULL;
     pen->dos = NULL;
+    pen->section = NULL;
     pen->nt.unt.nt32 = NULL;
     pen->nt.unt.nt64 = NULL;
 

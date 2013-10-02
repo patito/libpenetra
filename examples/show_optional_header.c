@@ -3,6 +3,8 @@
 
 #include <penetra/penetra.h>
 #include <penetra/import.h>
+#include <penetra/load_config.h>
+#include <penetra/resource.h>
 
 int main (int argc, char** argv)
 {
@@ -13,6 +15,8 @@ int main (int argc, char** argv)
 	_u16 magic;
 	_u32 sheaders;
     _u32 offset;
+    //PenetraLoadConfig32 *lconfig = NULL;
+    PenetraResource *res = NULL;
 
 	if (argc < 2) {
 		printf("Usage: %s <bin>\n", *argv);
@@ -37,12 +41,18 @@ int main (int argc, char** argv)
 	penetra_optional_get_size_headers(&opt, &sheaders);
 	printf("Size Of Headers = %#x\n", sheaders);
 
-	penetra_optional_get_directory(&opt, 12, &dir);
+	penetra_optional_get_directory(&opt, 2, &dir);
 	printf("RVA = %#x\n", dir.rva);
 	printf("Size = %d\n", dir.size);
 	
     penetra_rva2ofs(&pen, dir.rva, &offset);
 	printf("Offset = %#x\n", offset);
+
+    res = (PenetraResource *)  (pen.mem + offset);
+	printf("TimeDateStamp = %d\n", res->tdstamp);
+	printf("major_version = %d\n", res->major_version);
+	printf("minor_version = %d\n", res->minor_version);
+	printf("number_named_entries = %d\n", res->number_named_entries);
 
     penetra_finish(&pen);
 
